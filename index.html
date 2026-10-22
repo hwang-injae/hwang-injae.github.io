@@ -18,9 +18,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-gmail" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5z" opacity=".35"/><path d="M14 2v6h6l-6-6z"/><text x="12" y="18" text-anchor="middle" font-size="7.2" font-weight="700" font-family="IBM Plex Mono, monospace" fill="currentColor">PDF</text></symbol>
+  </svg>
   <div class="nav-toggle" id="nav-toggle"><i class="uil uil-bars"></i></div>
   <button class="theme-toggle" id="theme-toggle" aria-label="다크 / 라이트 모드"><i class="uil uil-sun"></i></button>
 
@@ -52,10 +58,11 @@
         <div class="home-data">
           <p class="home-greeting">안녕하세요,</p>
           <h1 class="home-title">로봇 SW 개발자<br>황인재입니다</h1>
-          <div class="home-contacts">
-            <a href="mailto:il1282113@gmail.com">il1282113@gmail.com</a>
-            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener">github.com/hwang-injae</a>
-            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener">linkedin.com/in/hwang-injae</a>
+          <div class="icon-row home-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
           </div>
         </div>
         <div class="home-img-wrap"><img src="img/me/photo.jpg" alt="황인재" class="home-img"></div>
@@ -265,12 +272,12 @@
       <h2 class="section-title container" data-num="05">Contact</h2>
       <div class="contact-line container">
         <p class="contact-text">로봇 SW 개발 신입으로 함께할 팀을 찾고 있습니다. 메일 주시면 바로 답장드리겠습니다.</p>
-        <div class="contact-links">
-          <a href="mailto:il1282113@gmail.com">il1282113@gmail.com</a>
-          <a href="https://github.com/hwang-injae" target="_blank" rel="noopener">github.com/hwang-injae</a>
-          <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener">linkedin.com/in/hwang-injae</a>
-          <a href="portfolio.pdf" target="_blank" rel="noopener">Portfolio PDF</a>
-        </div>
+        <div class="icon-row contact-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
+          </div>
       </div>
     </section>
 
@@ -279,10 +286,11 @@
         <div class="footer-container container grid">
           <div><h1 class="footer-title">황인재</h1><span class="footer-subtitle">로봇 SW 개발자</span></div>
           <ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#work">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
-          <div class="footer-socials">
-            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub"><i class="uil uil-github-alt"></i></a>
-            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn"><i class="uil uil-linkedin"></i></a>
-            <a href="mailto:il1282113@gmail.com" class="footer-social" aria-label="Gmail"><i class="uil uil-envelope"></i></a>
+          <div class="icon-row footer-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
           </div>
         </div>
         <p class="footer-copy">© 2026 Hwang Injae</p>
@@ -297,6 +305,6 @@
     </svg>
   </div>
 
-  <script src="main.js?v=18"></script>
+  <script src="main.js?v=19"></script>
 </body>
 </html>
