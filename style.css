@@ -234,9 +234,9 @@ button { cursor: pointer; border: none; outline: none; }
 .others-card a { color: var(--skin-color); font-size: var(--small-font-size); display: inline-flex; align-items: center; gap: .25rem; }
 
 /* ===== Contact ===== */
-.contact-line { max-width: 1100px; }
+.contact-line { max-width: 1100px; text-align: center; }
 .contact-text { font-size: 1.15rem; line-height: 1.75; color: var(--title-color); margin-bottom: var(--mb15); white-space: nowrap; }
-.contact-links { display: flex; flex-wrap: nowrap; gap: .75rem 2rem; white-space: nowrap; }
+.contact-links { display: flex; flex-wrap: nowrap; justify-content: center; gap: .75rem 2rem; white-space: nowrap; }
 .contact-links a { display: inline-flex; align-items: center; column-gap: .4rem; color: var(--text-color); padding-bottom: .15rem; border-bottom: 1px solid var(--box-border, var(--mirage-color)); transition: .3s; }
 .contact-links a:hover { color: var(--skin-color); border-color: var(--skin-color); }
 .contact-container { grid-template-columns: repeat(3, 260px); column-gap: 1.5rem; justify-content: center; }
