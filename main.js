@@ -10,8 +10,16 @@ let saved = null;
 try { saved = localStorage.getItem('theme'); } catch (e) {}
 applyTheme(new URLSearchParams(location.search).get('theme') || saved || 'dark');
 themeBtn.addEventListener('click', () => {
-  applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
   themeBtn.classList.add('spin'); setTimeout(() => themeBtn.classList.remove('spin'), 520);
+  if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { applyTheme(next); return; }
+  const r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  const t = document.startViewTransition(() => applyTheme(next));
+  t.ready.then(() => root.animate(
+    { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+    { duration: 600, easing: 'cubic-bezier(.22,.61,.36,1)', pseudoElement: '::view-transition-new(root)' }
+  ));
 });
 
 // ===== 색·글꼴 미리보기 (?accent=hex&font=Google+Font+이름) =====
@@ -81,7 +89,13 @@ const NOTION_PAGES = {
   prewash: 'https://app.notion.com/p/401f5144f2448190b54bd0d5fa624d30',
   idc: 'https://app.notion.com/p/401f5144f24481d0bfd7d69a1d37d514'
 };
+let popupCard = null;
+function visibleCards() { return [...document.querySelectorAll('.work-card')].filter(c => c.style.display !== 'none'); }
 function openPopup(card) {
+  popupCard = card;
+  const list = visibleCards();
+  document.querySelector('.pp-count').textContent = (list.indexOf(card) + 1) + ' / ' + list.length;
+  document.querySelector('.pp-nav').style.display = list.length > 1 ? '' : 'none';
   document.querySelector('.pp-thumbnail img').src = card.querySelector('.work-img').src;
   document.querySelector('.portfolio-popup-subtitle span').innerHTML = card.dataset.category || '';
   const body = document.querySelector('.portfolio-popup-body');
@@ -96,7 +110,22 @@ function openPopup(card) {
 function closePopup() { popup.classList.remove('open'); document.body.style.overflow = ''; }
 document.querySelector('.portfolio-popup-close').addEventListener('click', closePopup);
 popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePopup();
+  if (!popup.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') stepPopup(1);
+  if (e.key === 'ArrowLeft') stepPopup(-1);
+});
+function stepPopup(d) {
+  const list = visibleCards(); if (!popupCard || list.length < 2) return;
+  const i = (list.indexOf(popupCard) + d + list.length) % list.length;
+  openPopup(list[i]);
+  document.querySelector('.portfolio-popup-inner').scrollTop = 0;
+  const content = document.querySelector('.portfolio-popup-content');
+  content.classList.remove('swap'); void content.offsetWidth; content.classList.add('swap');
+}
+document.querySelector('.pp-prev').addEventListener('click', () => stepPopup(-1));
+document.querySelector('.pp-next').addEventListener('click', () => stepPopup(1));
 
 // ===== 스크롤 위치에 따라 메뉴 강조 =====
 const sections = document.querySelectorAll('section[id]');
@@ -186,6 +215,7 @@ window.addEventListener('scroll', onScrollFx, { passive: true }); onScrollFx();
     entries.forEach(en => {
       if (!en.isIntersecting) return;
       en.target.classList.add('in');
+      if (en.target.style.transitionDelay) setTimeout(() => { en.target.style.transitionDelay = ''; }, 900);
       if (en.target.classList.contains('work-card')) en.target.querySelectorAll('.work-nums b').forEach(countUp);
       io.unobserve(en.target);
     });
@@ -205,3 +235,90 @@ window.addEventListener('scroll', onScrollFx, { passive: true }); onScrollFx();
   });
   zone.addEventListener('mouseleave', () => { wrap.style.transform = ''; });
 })();
+
+// ===== 이펙트: 텍스트 스크램블 (soulwire, codepen.io/soulwire/pen/mEMPrK 방식) =====
+class TextScramble {
+  constructor(el) { this.el = el; this.chars = '!<>-_\\/[]{}—=+*^?#01'; this.update = this.update.bind(this); }
+  setText(newText) {
+    const oldText = this.el.innerText, length = Math.max(oldText.length, newText.length);
+    const promise = new Promise(res => this.resolve = res);
+    this.queue = [];
+    for (let i = 0; i < length; i++) {
+      const start = Math.floor(Math.random() * 24), end = start + Math.floor(Math.random() * 24);
+      this.queue.push({ from: oldText[i] || '', to: newText[i] || '', start, end });
+    }
+    cancelAnimationFrame(this.frameRequest); this.frame = 0; this.update();
+    return promise;
+  }
+  update() {
+    let out = '', done = 0;
+    for (const q of this.queue) {
+      if (this.frame >= q.end) { done++; out += q.to; }
+      else if (this.frame >= q.start) {
+        if (!q.char || Math.random() < .28) q.char = this.chars[Math.floor(Math.random() * this.chars.length)];
+        out += `<span class="dud">${q.char}</span>`;
+      } else out += q.from;
+    }
+    this.el.innerHTML = out;
+    if (done === this.queue.length) this.resolve(); else { this.frameRequest = requestAnimationFrame(this.update); this.frame++; }
+  }
+}
+if (!reduceMotion) {
+  // 섹션 제목: 화면에 들어올 때 한 번
+  const titleIO = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target, text = el.textContent; const fx = new TextScramble(el);
+    el.textContent = text.replace(/\S/g, '_'); fx.setText(text); titleIO.unobserve(el);
+  }), { threshold: .6 });
+  document.querySelectorAll('.section-title').forEach(t => titleIO.observe(t));
+  // 왼쪽 메뉴: 마우스를 올릴 때
+  document.querySelectorAll('.nav-link').forEach(a => {
+    const text = a.textContent, fx = new TextScramble(a); let busy = false;
+    a.addEventListener('mouseenter', () => { if (busy) return; busy = true; fx.setText(text).then(() => busy = false); });
+  });
+}
+
+// ===== 이펙트: 커서 스포트라이트 (brittanychiang.com 방식) =====
+(function () {
+  if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const spot = document.createElement('div'); spot.className = 'spotlight'; document.body.prepend(spot);
+  let raf = 0, mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(() => { spot.style.setProperty('--mx', mx + 'px'); spot.style.setProperty('--my', my + 'px'); spot.classList.add('on'); raf = 0; });
+  }, { passive: true });
+  document.addEventListener('mouseleave', () => spot.classList.remove('on'));
+})();
+
+// ===== 이펙트: 마그네틱 아이콘 버튼 =====
+(function () {
+  if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('.icon-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * .35, y = (e.clientY - r.top - r.height / 2) * .35;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+})();
+
+// ===== 기능: 메일 아이콘을 누르면 주소 복사 + 알림 =====
+(function () {
+  const toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); document.body.appendChild(toast);
+  let timer = 0;
+  function show(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(timer); timer = setTimeout(() => toast.classList.remove('show'), 2200); }
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => a.addEventListener('click', () => {
+    const mail = a.getAttribute('href').replace('mailto:', '');
+    if (navigator.clipboard) navigator.clipboard.writeText(mail).then(() => show('메일 주소를 복사했습니다 · ' + mail)).catch(() => {});
+  }));
+})();
+
+// 사진 공개 효과가 끝나면 clip-path를 풀어 그림자가 보이게
+document.querySelectorAll('.about-photo.sub').forEach(p => p.addEventListener('transitionend', e => {
+  if (e.propertyName === 'clip-path') p.closest('.about-photos').classList.add('clip-done');
+}));
+
+// ===== 개발자 도구를 연 사람에게 =====
+console.log('%c황인재 · 로봇 SW 개발자', 'font: 700 16px serif; color: #3A4FB5');
+console.log('콘솔까지 열어 보셨네요. 이 사이트 코드는 https://github.com/hwang-injae/hwang-injae.github.io 에 있습니다.\n연락은 il1282113@gmail.com 으로 주세요.');
