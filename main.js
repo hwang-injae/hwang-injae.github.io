@@ -24,14 +24,20 @@ tabs.forEach(tab => {
   });
 });
 
-// ===== 프로젝트 필터 (mixitup) =====
-if (window.mixitup) {
-  mixitup('.work-container', { selectors: { target: '.work-card' }, animation: { duration: 300 } });
-}
+// ===== 프로젝트 필터 (직접 구현: 숨김/표시 + 아래에서 올라오는 페이드) =====
 const linkWork = document.querySelectorAll('.work-item');
+const workCards = document.querySelectorAll('.work-card');
 linkWork.forEach(l => l.addEventListener('click', function () {
   linkWork.forEach(x => x.classList.remove('active-work'));
   this.classList.add('active-work');
+  const f = this.dataset.filter;
+  let i = 0;
+  workCards.forEach(c => {
+    const show = f === 'all' || c.matches(f);
+    c.style.display = show ? '' : 'none';
+    c.classList.remove('card-in');
+    if (show) { void c.offsetWidth; c.style.animationDelay = (i++ * 60) + 'ms'; c.classList.add('card-in'); }
+  });
 }));
 
 // ===== 프로젝트 팝업 =====
@@ -66,16 +72,65 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup()
 
 // ===== 스크롤 위치에 따라 메뉴 강조 =====
 const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 function navHighlighter() {
   const y = window.pageYOffset;
-  sections.forEach(s => {
-    const top = s.offsetTop - 80, h = s.offsetHeight, id = s.getAttribute('id');
-    const link = document.querySelector('.nav-menu a[href*=' + id + ']');
-    if (!link) return;
-    if (y > top && y <= top + h) link.classList.add('active-link'); else link.classList.remove('active-link');
-  });
+  const pivot = y + window.innerHeight * 0.4;           // 화면 위쪽 40% 지점을 기준으로 판단
+  const atBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 2;
+  let current = sections[0].id;
+  sections.forEach(s => { if (pivot >= s.offsetTop) current = s.id; });
+  if (atBottom) current = sections[sections.length - 1].id;  // 맨 아래면 마지막(Contact)
+  navLinks.forEach(a => a.classList.toggle('active-link', a.getAttribute('href') === '#' + current));
 }
-window.addEventListener('scroll', navHighlighter);
+window.addEventListener('scroll', navHighlighter, { passive: true });
+window.addEventListener('load', navHighlighter);
+
+// ===== 프로젝트 카드 호버 글로우 =====
+const workBox = document.querySelector('.work-container');
+const workGlow = document.querySelector('.work-glow');
+if (workBox && workGlow) {
+  const pad = 10;
+  workBox.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      workGlow.style.width = card.offsetWidth + pad * 2 + 'px';
+      workGlow.style.height = card.offsetHeight + pad * 2 + 'px';
+      workGlow.style.transform = `translate(${card.offsetLeft - pad}px, ${card.offsetTop - pad}px)`;
+      workGlow.classList.add('on');
+    });
+  });
+  workBox.addEventListener('mouseleave', () => workGlow.classList.remove('on'));
+}
+
+// ===== 커스텀 커서(회전 화살표) — 마우스 환경에서만 =====
+(function () {
+  const el = document.querySelector('.curzr-arrow-pointer');
+  if (!el || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.documentElement.classList.add('has-cursor');
+  el.removeAttribute('hidden');
+  let px = 0, py = 0, angle = 0, displace = 0, shown = false;
+  const SIZE = 20, DEG = 57.296;
+  function rotate(dx, dy) {
+    const raw = Math.atan(Math.abs(dy) / Math.abs(dx)) * DEG;
+    let a;
+    if (dx <= 0 && dy >= 0) a = 90 - raw;
+    else if (dx < 0 && dy < 0) a = raw + 90;
+    else if (dx >= 0 && dy <= 0) a = 270 - raw;
+    else a = raw + 270;
+    if (isNaN(a)) return;
+    const diff = a - angle;
+    if (diff <= -270) displace += 360 + diff; else if (diff >= 270) displace += diff - 360; else displace += diff;
+    angle = a;
+  }
+  document.addEventListener('mousemove', e => {
+    const dx = px - e.clientX, dy = py - e.clientY;
+    px = e.clientX; py = e.clientY;
+    if (Math.hypot(dx, dy) > 1) rotate(dx, dy);
+    el.style.transform = `translate3d(${px - SIZE / 2}px, ${py}px, 0) rotate(${displace}deg)`;
+    if (!shown) { shown = true; el.style.opacity = 1; }
+  }, { passive: true });
+  document.addEventListener('mouseleave', () => { el.style.opacity = 0; shown = false; });
+  document.addEventListener('mouseenter', () => { el.style.opacity = 1; shown = true; });
+})();
 
 // ===== 모바일 사이드바 =====
 const navMenu = document.getElementById('sidebar');
