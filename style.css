@@ -3,9 +3,9 @@
 
 /* ===== 색 · 글꼴 변수 (다크 기본) ===== */
 :root {
-  --hue-color: 205;
-  --skin-dark: hsl(205, 88%, 50%);
-  --skin-light: hsl(205, 100%, 36%);
+  --hue-color: 230;
+  --skin-dark: hsl(230, 60%, 56%);
+  --skin-light: hsl(230, 51%, 42%);
   --skin-color: var(--skin-dark);
   --mirage-color: hsl(205, 18%, 22%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
