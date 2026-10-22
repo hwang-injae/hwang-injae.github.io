@@ -181,12 +181,6 @@ button { cursor: pointer; border: none; outline: none; }
 
 /* ===== Projects ===== */
 .work-container { grid-template-columns: repeat(2, 460px); gap: 1.8rem; justify-content: center; padding-top: 1rem; }
-/* 벤토 배치 — 첫 카드는 두 칸, 마지막 카드는 가로형 */
-.work-card.card-l { grid-column: span 2; }
-.work-card.card-l .work-img { aspect-ratio: 21 / 9; }
-.work-card.card-h { grid-column: span 2; display: grid; grid-template-columns: 1fr 1.3fr; column-gap: 1.5rem; align-items: center; }
-.work-card.card-h .work-img { grid-column: 1; grid-row: 1 / span 5; aspect-ratio: 4 / 3; height: 100%; margin-bottom: 0; }
-.work-card.card-h > :not(.work-img) { grid-column: 2; }
 .work-card { cursor: pointer; }
 .work-filters { display: flex; justify-content: center; align-items: center; column-gap: .75rem; margin-bottom: 2rem; flex-wrap: wrap; row-gap: .5rem; }
 .work-item { cursor: pointer; color: var(--title-color); padding: .25rem .75rem; font-weight: var(--font-medium); border-radius: .5rem; transition: .3s; }
@@ -240,9 +234,9 @@ button { cursor: pointer; border: none; outline: none; }
 .others-card a { color: var(--skin-color); font-size: var(--small-font-size); display: inline-flex; align-items: center; gap: .25rem; }
 
 /* ===== Contact ===== */
-.contact-line { max-width: 760px; }
-.contact-text { font-size: var(--h3-font-size); line-height: 1.75; color: var(--title-color); margin-bottom: var(--mb15); }
-.contact-links { display: flex; flex-wrap: wrap; gap: .75rem 1.75rem; }
+.contact-line { max-width: 1100px; }
+.contact-text { font-size: 1.15rem; line-height: 1.75; color: var(--title-color); margin-bottom: var(--mb15); white-space: nowrap; }
+.contact-links { display: flex; flex-wrap: nowrap; gap: .75rem 2rem; white-space: nowrap; }
 .contact-links a { display: inline-flex; align-items: center; column-gap: .4rem; color: var(--text-color); padding-bottom: .15rem; border-bottom: 1px solid var(--box-border, var(--mirage-color)); transition: .3s; }
 .contact-links a:hover { color: var(--skin-color); border-color: var(--skin-color); }
 .contact-container { grid-template-columns: repeat(3, 260px); column-gap: 1.5rem; justify-content: center; }
@@ -305,10 +299,9 @@ button { cursor: pointer; border: none; outline: none; }
 @media screen and (max-width: 768px) {
   .section-title { font-size: 2rem; }
   .qualification-container, .work-container, .others-container, .contact-container { grid-template-columns: 1fr; row-gap: 1.5rem; }
-  .work-card.card-l, .work-card.card-h { grid-column: auto; }
-  .work-card.card-h { display: block; }
-  .work-card.card-h .work-img, .work-card.card-l .work-img { aspect-ratio: 16 / 9; height: auto; margin-bottom: var(--mb1); }
   .about-photos { max-width: 320px; }
+  .contact-text { white-space: normal; }
+  .contact-links { flex-wrap: wrap; }
   .skills-data { grid-template-columns: 44px 1fr; }
   .skills-where { grid-column: 2; }
   .my-info { display: none; }
