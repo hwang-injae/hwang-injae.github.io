@@ -31,7 +31,8 @@ themeBtn.addEventListener('click', () => applyTheme(root.getAttribute('data-them
     const link = document.createElement('link'); link.rel = 'stylesheet';
     link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam).replace(/%20/g, '+') + ':wght@500;600;700&display=swap';
     document.head.appendChild(link);
-    root.style.setProperty('--head-font', `'${fam}', 'Pretendard', sans-serif`);
+    root.style.setProperty('--head-font', `'${fam}', 'IBM Plex Sans KR', sans-serif`);
+    if (q.get('body') === '1') root.style.setProperty('--body-font', `'${fam}', 'IBM Plex Sans KR', sans-serif`);
   }
 })();
 
