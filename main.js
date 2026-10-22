@@ -11,6 +11,30 @@ try { saved = localStorage.getItem('theme'); } catch (e) {}
 applyTheme(new URLSearchParams(location.search).get('theme') || saved || 'dark');
 themeBtn.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'));
 
+// ===== 색·글꼴 미리보기 (?accent=hex&font=Google+Font+이름) =====
+(function () {
+  const q = new URLSearchParams(location.search);
+  const hex = (q.get('accent') || '').replace('#', '');
+  if (/^[0-9a-f]{6}$/i.test(hex)) {
+    const r = parseInt(hex.slice(0, 2), 16) / 255, g = parseInt(hex.slice(2, 4), 16) / 255, b = parseInt(hex.slice(4, 6), 16) / 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2; let h = 0, s = 0;
+    if (max !== min) { const d = max - min; s = l > .5 ? d / (2 - max - min) : d / (max + min);
+      h = max === r ? ((g - b) / d + (g < b ? 6 : 0)) : max === g ? ((b - r) / d + 2) : ((r - g) / d + 4); h *= 60; }
+    const H = Math.round(h), S = Math.round(s * 100), L = Math.round(l * 100);
+    root.style.setProperty('--hue-color', H);
+    root.style.setProperty('--skin-light', `hsl(${H}, ${S}%, ${Math.min(L, 42)}%)`);
+    root.style.setProperty('--skin-dark', `hsl(${H}, ${Math.max(S, 60)}%, ${Math.max(L, 54)}%)`);
+  }
+  const font = q.get('font');
+  if (font && /^[A-Za-z0-9 +]+$/.test(font)) {
+    const fam = font.replace(/\+/g, ' ');
+    const link = document.createElement('link'); link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam).replace(/%20/g, '+') + ':wght@500;600;700&display=swap';
+    document.head.appendChild(link);
+    root.style.setProperty('--head-font', `'${fam}', 'Pretendard', sans-serif`);
+  }
+})();
+
 // ===== 스킬 탭 =====
 const tabs = document.querySelectorAll('[data-target]');
 const tabContent = document.querySelectorAll('[data-content]');
