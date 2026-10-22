@@ -9,7 +9,10 @@ function applyTheme(t) {
 let saved = null;
 try { saved = localStorage.getItem('theme'); } catch (e) {}
 applyTheme(new URLSearchParams(location.search).get('theme') || saved || 'dark');
-themeBtn.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'));
+themeBtn.addEventListener('click', () => {
+  applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  themeBtn.classList.add('spin'); setTimeout(() => themeBtn.classList.remove('spin'), 520);
+});
 
 // ===== 색·글꼴 미리보기 (?accent=hex&font=Google+Font+이름) =====
 (function () {
@@ -148,3 +151,57 @@ const navClose = document.getElementById('nav-close');
 navToggle.addEventListener('click', () => navMenu.classList.add('show-sidebar'));
 navClose.addEventListener('click', () => navMenu.classList.remove('show-sidebar'));
 document.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('show-sidebar')));
+
+// ===== 이펙트: 스크롤 진행 바 · 맨 위로 =====
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const progress = document.createElement('div'); progress.className = 'scroll-progress'; document.body.appendChild(progress);
+const toTop = document.createElement('button'); toTop.className = 'to-top'; toTop.setAttribute('aria-label', '맨 위로'); toTop.innerHTML = '<i class="uil uil-arrow-up"></i>'; document.body.appendChild(toTop);
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
+function onScrollFx() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (max > 0 ? Math.min(100, window.scrollY / max * 100) : 0) + '%';
+  toTop.classList.toggle('show', window.scrollY > 600);
+}
+window.addEventListener('scroll', onScrollFx, { passive: true }); onScrollFx();
+
+// ===== 이펙트: 화면에 들어올 때 올라오며 나타남 · 숫자 카운트 =====
+(function () {
+  const targets = document.querySelectorAll('.section-title, .about-photos, .about-data, .timeline-item, .skills-header, .work-card, .contact-line, .footer-container');
+  targets.forEach(el => el.classList.add('reveal'));
+  document.querySelectorAll('.work-card').forEach((c, i) => c.style.transitionDelay = (i % 2) * 90 + 'ms');
+  document.querySelectorAll('.timeline-item').forEach((c, i) => c.style.transitionDelay = (i % 4) * 90 + 'ms');
+  function countUp(b) {
+    const m = b.textContent.match(/^(\D*?)(\d+(?:\.\d+)?)(.*)$/s);
+    if (!m || b.dataset.done) return;
+    b.dataset.done = '1';
+    const end = parseFloat(m[2]), dec = (m[2].split('.')[1] || '').length, t0 = performance.now(), dur = 1100;
+    (function step(now) {
+      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      b.textContent = m[1] + (end * e).toFixed(dec) + m[3];
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  if (reduceMotion || !('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      if (en.target.classList.contains('work-card')) en.target.querySelectorAll('.work-nums b').forEach(countUp);
+      io.unobserve(en.target);
+    });
+  }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+  targets.forEach(el => io.observe(el));
+})();
+
+// ===== 이펙트: 첫 화면 사진이 마우스를 따라 살짝 기울어짐 =====
+(function () {
+  const wrap = document.querySelector('.home-img-wrap');
+  if (!wrap || reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const zone = document.querySelector('.home');
+  zone.addEventListener('mousemove', e => {
+    const r = wrap.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const dx = (e.clientX - cx) / window.innerWidth, dy = (e.clientY - cy) / window.innerHeight;
+    wrap.style.transform = `perspective(900px) rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg)`;
+  });
+  zone.addEventListener('mouseleave', () => { wrap.style.transform = ''; });
+})();
