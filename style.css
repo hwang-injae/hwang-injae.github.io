@@ -5,7 +5,7 @@
 :root {
   --hue-color: 230;
   --skin-dark: hsl(230, 60%, 56%);
-  --skin-light: hsl(230, 51%, 42%);
+  --skin-light: hsl(205, 100%, 36%);
   --skin-color: var(--skin-dark);
   --mirage-color: hsl(205, 18%, 22%);
   --title-color: hsl(var(--hue-color), 8%, 95%);
@@ -35,6 +35,7 @@
 }
 /* ===== 라이트 모드 ===== */
 :root[data-theme="light"] {
+  --hue-color: 205;
   --skin-color: var(--skin-light);
   --title-color: hsl(var(--hue-color), 19%, 12%);
   --text-color: hsl(var(--hue-color), 10%, 30%);
