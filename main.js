@@ -85,22 +85,6 @@ function navHighlighter() {
 window.addEventListener('scroll', navHighlighter, { passive: true });
 window.addEventListener('load', navHighlighter);
 
-// ===== 프로젝트 카드 호버 글로우 =====
-const workBox = document.querySelector('.work-container');
-const workGlow = document.querySelector('.work-glow');
-if (workBox && workGlow) {
-  const pad = 10;
-  workBox.querySelectorAll('.work-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      workGlow.style.width = card.offsetWidth + pad * 2 + 'px';
-      workGlow.style.height = card.offsetHeight + pad * 2 + 'px';
-      workGlow.style.transform = `translate(${card.offsetLeft - pad}px, ${card.offsetTop - pad}px)`;
-      workGlow.classList.add('on');
-    });
-  });
-  workBox.addEventListener('mouseleave', () => workGlow.classList.remove('on'));
-}
-
 // ===== 커스텀 커서(회전 화살표) — 마우스 환경에서만 =====
 (function () {
   const el = document.querySelector('.curzr-arrow-pointer');

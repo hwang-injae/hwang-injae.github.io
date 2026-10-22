@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://hwang-injae.github.io/">
   <link rel="canonical" href="https://hwang-injae.github.io/">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <div class="nav-toggle" id="nav-toggle"><i class="uil uil-bars"></i></div>
@@ -72,7 +72,11 @@
     <section class="about section" id="about">
       <h2 class="section-title">About me</h2>
       <div class="about-container container grid">
-        <img src="img/bm/hd_regrip.jpg" alt="협동로봇이 블록을 집는 장면" class="about-img">
+        <div class="about-photos">
+          <img src="img/bm/hi_portrait.jpg" alt="ROKEY 교육장에서 M0609가 블록을 집어 올리는 장면" class="about-photo main">
+          <img src="img/idc/portrait.jpg" alt="TurtleBot4 2대가 순찰하는 미니 IDC" class="about-photo sub">
+          <span class="about-note">ROKEY 9기 교육장에서, 2026</span>
+        </div>
         <div class="about-data">
           <h3 class="about-heading">도전은 많이 했지만,<br>로봇 SW는 달랐습니다</h3>
           <p class="about-description">두산로보틱스 ROKEY 부트캠프에서 협동로봇(M0609 · P3020)과 AMR(TurtleBot4)로 Project 4건을 하며, Vision · AI가 판단한 결과대로 로봇이 움직이도록 Vision과 로봇을 연동했고, Project 초기 설계와 전체 기능 통합을 맡아 왔습니다.</p>
@@ -174,12 +178,12 @@
         <span class="work-item" data-filter=".sim">Digital Twin</span>
       </div>
       <div class="work-container container grid">
-        <div class="work-glow" aria-hidden="true"></div>
-        <div class="work-card mix cobot" data-category="협동로봇 실기 · PL">
+        <div class="work-card card-l mix cobot" data-category="협동로봇 실기 · PL">
           <img src="img/bm/cover.jpg" alt="BuildMind" class="work-img">
           <div class="work-tag">협동로봇 · 2026.10 · 16일 · 5인</div>
           <h3 class="work-title">BuildMind</h3>
           <p class="work-desc">말로 설계하고, 로봇이 조립한다</p>
+          <div class="work-nums"><div><b>11/11</b><span>설계대로 조립</span></div><div><b>98%</b><span>블록 집기</span></div><div><b>0.972</b><span>mAP50</span></div></div>
           <div class="portfolio-item-details">
             <h3 class="details-title">BuildMind — AI 설계 블록 조립 협동로봇</h3>
             <p class="details-description">말이나 글로 요청하면 AI가 블록 설계도를 만들고, 협동로봇이 흩어진 블록을 찾아 조립합니다.</p>
@@ -198,6 +202,7 @@
           <div class="work-tag">Digital Twin · 2026.08 · 2주 · 4인</div>
           <h3 class="work-title">SortTwin</h3>
           <p class="work-desc">화물이 빌 때까지 박스를 찾아 옮기고 분류한다</p>
+          <div class="work-nums"><div><b>1</b><span>미션으로 전 공정</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
           <div class="portfolio-item-details">
             <h3 class="details-title">SortTwin — AMR × 협동로봇 택배 분류 Digital Twin</h3>
             <p class="details-description">입고 AMR이 가져온 박스를 P3020이 카메라로 찾아 컨베이어에 올리고 분류하는 공정을 Isaac Sim에 구현했습니다.</p>
@@ -216,6 +221,7 @@
           <div class="work-tag">협동로봇 · 2026.09 · 13일 · 4인</div>
           <h3 class="work-title">PreWash-Cell</h3>
           <p class="work-desc">카메라 없이 다회용기를 닦아 세척기에 꽂는다</p>
+          <div class="work-nums"><div><b>약 13분</b><span>무정지 완주</span></div><div><b>7/7</b><span>수락 기준</span></div><div><b>7종</b><span>예외 복구</span></div></div>
           <div class="portfolio-item-details">
             <h3 class="details-title">PreWash-Cell — 다회용기 예비세척 자동화 셀</h3>
             <p class="details-description">협동로봇 1대가 집기 → 잔반 판정 → 닦기 → 헹굼 → 적재까지 버튼 한 번으로 처리합니다. 카메라 없이 파지 폭 · 무게 · 힘으로 판단합니다.</p>
@@ -229,11 +235,12 @@
           </div>
         </div>
 
-        <div class="work-card mix amr" data-category="AMR 실기 · 데이터 → PM">
+        <div class="work-card card-h mix amr" data-category="AMR 실기 · 데이터 → PM">
           <img src="img/idc/amr_cam.jpg" alt="IDC Patrol" class="work-img">
           <div class="work-tag">AMR · 2026.09 · 6일 · 8인</div>
           <h3 class="work-title">IDC Patrol</h3>
           <p class="work-desc">무인 시간대에 열린 랙 문을 찾아 관제에 알린다</p>
+          <div class="work-nums"><div><b>2대</b><span>동시 매핑</span></div><div><b>209장</b><span>재수집 데이터</span></div><div><b>6일</b><span>8명 MVP</span></div></div>
           <div class="portfolio-item-details">
             <h3 class="details-title">IDC Patrol — 열린 랙 문을 찾는 TurtleBot4 2대</h3>
             <p class="details-description">데이터센터 무인 시간대를 순찰하며 랙 문 열림(YOLO)과 랙 번호(ArUco)를 판별해 관제 화면에 보고합니다.</p>
@@ -265,10 +272,14 @@
     <!-- ===== Contact ===== -->
     <section class="contact section" id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="contact-container container grid">
-        <a href="mailto:il1282113@gmail.com" class="contact-card"><i class="uil uil-envelope-edit contact-card-icon"></i><h3 class="contact-card-title">Email</h3><span class="contact-card-data">il1282113@gmail.com</span><span class="contact-button">메일 보내기 <i class="uil uil-arrow-right contact-button-icon"></i></span></a>
-        <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="contact-card"><i class="uil uil-github-alt contact-card-icon"></i><h3 class="contact-card-title">GitHub</h3><span class="contact-card-data">github.com/hwang-injae</span><span class="contact-button">Project README <i class="uil uil-arrow-right contact-button-icon"></i></span></a>
-        <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="contact-card"><i class="uil uil-linkedin contact-card-icon"></i><h3 class="contact-card-title">LinkedIn</h3><span class="contact-card-data">linkedin.com/in/hwang-injae</span><span class="contact-button">Profile 보기 <i class="uil uil-arrow-right contact-button-icon"></i></span></a>
+      <div class="contact-line container">
+        <p class="contact-text">지금은 로봇 SW 개발 신입 자리를 찾고 있습니다. 메일을 주시면 포트폴리오 PDF와 함께 답장드리겠습니다.</p>
+        <div class="contact-links">
+          <a href="mailto:il1282113@gmail.com"><i class="uil uil-envelope"></i> il1282113@gmail.com</a>
+          <a href="https://github.com/hwang-injae" target="_blank" rel="noopener"><i class="uil uil-github-alt"></i> github.com/hwang-injae</a>
+          <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener"><i class="uil uil-linkedin"></i> linkedin.com/in/hwang-injae</a>
+          <a href="portfolio.pdf" target="_blank" rel="noopener"><i class="uil uil-file-alt"></i> Portfolio PDF</a>
+        </div>
       </div>
     </section>
 
@@ -295,6 +306,6 @@
     </svg>
   </div>
 
-  <script src="main.js?v=9"></script>
+  <script src="main.js?v=10"></script>
 </body>
 </html>
