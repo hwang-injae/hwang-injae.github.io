@@ -75,7 +75,7 @@
       <div class="about-container container grid">
         <div class="about-photos">
           <img src="img/bm/hi_portrait.jpg" alt="ROKEY 교육장에서 M0609가 블록을 집어 올리는 장면" class="about-photo main">
-          <img src="img/idc/portrait.jpg" alt="TurtleBot4 2대가 순찰하는 미니 IDC" class="about-photo sub">
+          <img src="img/pw/portrait.jpg" alt="PreWash-Cell에서 M0609가 다회용 그릇 안쪽을 닦는 장면" class="about-photo sub">
           <span class="about-note">ROKEY 9기 교육장에서, 2026</span>
         </div>
         <div class="about-data">
@@ -196,14 +196,14 @@
           <div class="work-tag">Digital Twin · 2026.08 · 2주 · 4인</div>
           <h3 class="work-title">SortTwin</h3>
           <p class="work-desc">Isaac Sim에서 AMR이 가져온 박스를 P3020이 카메라로 찾아 집고, 컨베이어로 분류합니다.</p>
-          <p class="work-role">담당 · P3020 입고 · 출고 Pick &amp; Place · Vision 연동</p>
-          <div class="work-nums"><div><b>전 공정</b><span>한 미션으로 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
+          <p class="work-role">담당 · P3020 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동</p>
+          <div class="work-nums"><div><b>1미션</b><span>입고 → 분류 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
           <div class="portfolio-item-details">
             <h3 class="details-title">SortTwin — AMR × 협동로봇 택배 분류 Digital Twin</h3>
             <p class="details-description">입고 AMR이 가져온 박스를 P3020이 카메라로 찾아 컨베이어에 올리고 분류하는 공정을 Isaac Sim에 구현했습니다.</p>
-            <div class="details-nums"><div><b>전 공정</b><span>한 미션으로 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
-            <div class="details-label">담당 역할 · P3020 입고 · 출고 Pick &amp; Place · Vision 연동</div>
-            <ul class="details-list"><li>입고 · 출고 P3020 Pick &amp; Place — Lula IK · 로봇 위치는 USD에서 읽어 자동 반영</li><li>픽셀 + 깊이 → 3D 좌표, 거리 · 색 · 높이 필터로 오검출 제거</li><li>화물이 빌 때까지 반복, 5초 미검출이면 AMR 복귀</li><li>ROS 2 Action 서버 · 단계별 진행률 피드백</li></ul>
+            <div class="details-nums"><div><b>1미션</b><span>입고 → 분류 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
+            <div class="details-label">담당 역할 · P3020 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동</div>
+            <ul class="details-list"><li>P3020 입고 Pick &amp; Place · 출고 첫 버전 — Lula IK · 로봇 위치는 USD에서 읽어 자동 반영</li><li>픽셀 + 깊이 → 3D 좌표, 거리 · 색 · 높이 필터로 오검출 제거</li><li>화물이 빌 때까지 반복, 5초 미검출이면 AMR 복귀</li><li>ROS 2 Action 서버 · 단계별 진행률 피드백</li></ul>
             <div class="details-label">문제 해결</div>
             <ul class="details-list"><li>Isaac Sim(Python 3.11) ↔ ROS 2(Python 3.12) 타입 불일치 → 액션 서버 프로세스 분리 · 표준 타입 토픽 2개</li></ul>
             <div class="chips small"><span>Isaac Sim 5.1</span><span>ROS 2 Jazzy</span><span>Lula IK</span><span>ROS 2 Action</span><span>RGB-D</span><span>Python</span></div>
