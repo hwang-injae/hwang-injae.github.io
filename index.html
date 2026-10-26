@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-  <link rel="stylesheet" href="style.css?v=22">
+  <link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -126,7 +126,7 @@
             <div class="skills-list grid">
               <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg" alt=""><h3 class="skills-name">ROS 2 Jazzy</h3><span class="skills-where">노드 · 액션 · 토픽 규약</span></div>
               <div class="skills-data"><span class="sk-logo sk-wide"><img class="sk-doosan" src="img/logo/doosan.svg" alt="Doosan"></span><h3 class="skills-name">두산 M0609 · P3020</h3><span class="skills-where">DRL → ROS 2 · 힘 제어 · Pick &amp; Place</span></div>
-              <div class="skills-data"><span class="sk-logo sk-draw"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="2"/><path d="M12 6V3M9 3h6M4 16h2M18 16h2"/></svg></span><h3 class="skills-name">TurtleBot4 · Nav2</h3><span class="skills-where">순찰 · SLAM · 추적 주행</span></div>
+              <div class="skills-data"><span class="sk-logo sk-draw"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="2"/><path d="M12 6V3M9 3h6M4 16h2M18 16h2"/></svg></span><h3 class="skills-name">TurtleBot4 · Nav2</h3><span class="skills-where">SLAM 지도 작성 · 탐색 · 추적 주행</span></div>
               <div class="skills-data"><span class="sk-logo"><img src="img/logo/nvidia_brand.svg" alt="NVIDIA"></span><h3 class="skills-name">Isaac Sim 5.1 · Lula IK</h3><span class="skills-where">Digital Twin Pick &amp; Place</span></div>
               <div class="skills-data"><span class="sk-logo sk-pair"><img class="only-dark" src="img/logo/mqtt_dark.svg" alt=""><img class="only-light" src="img/logo/mqtt_light.svg" alt=""></span><h3 class="skills-name">MQTT</h3><span class="skills-where">로봇 PC – 웹 PC 브리지</span></div>
             </div>
@@ -168,7 +168,6 @@
       <div class="work-filters">
         <span class="work-item active-work" data-filter="all">All</span>
         <span class="work-item" data-filter=".cobot">협동로봇</span>
-        <span class="work-item" data-filter=".amr">AMR</span>
         <span class="work-item" data-filter=".sim">Digital Twin</span>
       </div>
       <div class="work-container container grid">
@@ -231,26 +230,6 @@
             <div class="details-buttons"><a href="https://github.com/hwang-injae/prewash-cell" target="_blank" rel="noopener" class="button"><i class="uil uil-github-alt"></i> GitHub</a><a href="#" target="_blank" rel="noopener" class="button button-ghost notion-link" data-notion="prewash"><i class="uil uil-book-open"></i> Notion</a><a href="https://raw.githubusercontent.com/hwang-injae/prewash-cell/main/docs/images/demo/demo_cup_wipe.gif" target="_blank" rel="noopener" class="button button-ghost"><i class="uil uil-play-circle"></i> 시연 영상</a></div>
           </div>
         </div>
-
-        <div class="work-card mix amr" data-category="AMR 실기 · 데이터 → PM">
-          <div class="work-img-wrap"><img src="img/idc/amr_cam.jpg" alt="IDC Patrol" class="work-img"></div>
-          <div class="work-tag">AMR · 2026.09 · 6일 · 8인</div>
-          <h3 class="work-title">IDC Patrol</h3>
-          <p class="work-desc">TurtleBot4 2대가 데이터센터를 나눠 순찰하며 열린 랙 문을 찾아 관제에 알립니다.</p>
-          <p class="work-role">담당 · 데이터 · 라벨링 기준 → PM · 시스템 구성도</p>
-          <div class="work-nums"><div><b>2대</b><span>동시 매핑</span></div><div><b>209장</b><span>재수집 데이터</span></div><div><b>6일</b><span>8명 MVP</span></div></div>
-          <div class="portfolio-item-details">
-            <h3 class="details-title">IDC Patrol — 열린 랙 문을 찾는 TurtleBot4 2대</h3>
-            <p class="details-description">데이터센터 무인 시간대를 순찰하며 랙 문 열림(YOLO)과 랙 번호(ArUco)를 판별해 관제 화면에 보고합니다.</p>
-            <div class="details-nums"><div><b>2대</b><span>동시 매핑</span></div><div><b>209장</b><span>재수집 데이터</span></div><div><b>6일</b><span>8명 MVP</span></div></div>
-            <div class="details-label">담당 역할 · 데이터 → PM</div>
-            <ul class="details-list"><li>라벨링 가이드 · 검수 규칙 배포, 데이터 수집 · 라벨링</li><li>PC 4대 구성도 + 파트별 구성도 3종, 설계 문서 개정</li><li>9/7부터 데일리 브리핑으로 작업 배분 · 일정 조정</li></ul>
-            <div class="details-label">문제 해결</div>
-            <ul class="details-list"><li>검은 랙이라 열림 · 닫힘 구분 실패 → 흰 종이 부착 · 촬영 기준 수립 · 재수집(209장) → 실제 카메라에서 검출</li></ul>
-            <div class="chips small"><span>TurtleBot4</span><span>ROS 2</span><span>SLAM · Nav2</span><span>YOLO</span><span>ArUco</span><span>MQTT</span><span>FastAPI</span></div>
-            <div class="details-buttons"><a href="https://github.com/hwang-injae/idc-patrol-robot" target="_blank" rel="noopener" class="button"><i class="uil uil-github-alt"></i> GitHub</a><a href="#" target="_blank" rel="noopener" class="button button-ghost notion-link" data-notion="idc"><i class="uil uil-book-open"></i> Notion</a><a href="https://raw.githubusercontent.com/hwang-injae/idc-patrol-robot/main/docs/images/demo.gif" target="_blank" rel="noopener" class="button button-ghost"><i class="uil uil-play-circle"></i> 시연 영상</a></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -258,7 +237,7 @@
       <div class="portfolio-popup-inner">
         <div class="portfolio-popup-content grid">
           <span class="portfolio-popup-close"><i class="uil uil-times"></i></span>
-          <div class="pp-nav"><button class="pp-prev" aria-label="이전 Project">←</button><span class="pp-count">1 / 4</span><button class="pp-next" aria-label="다음 Project">→</button></div>
+          <div class="pp-nav"><button class="pp-prev" aria-label="이전 Project">←</button><span class="pp-count">1 / 3</span><button class="pp-next" aria-label="다음 Project">→</button></div>
           <div class="pp-thumbnail"><img src="" alt="" class="portfolio-popup-img"></div>
           <div class="portfolio-popup-info">
             <div class="portfolio-popup-subtitle">Project · <span></span></div>
@@ -306,6 +285,6 @@
     </svg>
   </div>
 
-  <script src="main.js?v=22"></script>
+  <script src="main.js?v=23"></script>
 </body>
 </html>

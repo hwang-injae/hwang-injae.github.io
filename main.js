@@ -86,8 +86,7 @@ document.addEventListener('click', e => {
 const NOTION_PAGES = {
   buildmind: 'https://app.notion.com/p/401f5144f244818c97cbdf9a395181ca',
   sorttwin: 'https://app.notion.com/p/401f5144f24481e4a4a8dcf259c55da4',
-  prewash: 'https://app.notion.com/p/401f5144f2448190b54bd0d5fa624d30',
-  idc: 'https://app.notion.com/p/401f5144f24481d0bfd7d69a1d37d514'
+  prewash: 'https://app.notion.com/p/401f5144f2448190b54bd0d5fa624d30'
 };
 let popupCard = null;
 function visibleCards() { return [...document.querySelectorAll('.work-card')].filter(c => c.style.display !== 'none'); }
