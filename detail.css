@@ -68,3 +68,8 @@
 .detail .list li:hover { background: color-mix(in srgb, var(--skin-color) 12%, transparent); color: var(--title-color); text-shadow: 0 0 14px color-mix(in srgb, var(--skin-color) 55%, transparent); }
 .detail .list li:hover::before { text-shadow: 0 0 10px var(--skin-color); transform: translateX(2px); }
 .detail .list li:hover b { color: var(--skin-color); }
+
+.detail .tech-label { font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color-light); margin: .9rem 0 .4rem; }
+.detail .code-paths { font-size: var(--small-font-size); color: var(--text-color-light); margin-top: 1rem; }
+.detail .code-paths b { color: var(--skin-color); font-weight: 500; font-family: var(--mono-font); font-size: var(--smaller-font-size); margin-right: .4rem; }
+.detail .code-paths code { font-family: var(--mono-font); font-size: var(--smaller-font-size); background: var(--box-color); border: 1px solid var(--box-border); border-radius: .35rem; padding: .1rem .4rem; color: var(--text-color); }

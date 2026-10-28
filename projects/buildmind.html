@@ -7,7 +7,7 @@
   <meta name="description" content="AI 설계 블록 조립 협동로봇 BuildMind — PL · AI 설계 생성 · 설계 DB · 웹 화면 · YOLO seg 학습">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=2">
+  <link rel="stylesheet" href="../detail.css?v=3">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -20,55 +20,42 @@
     <p class="kind">Project 1 · 협동로봇 실기</p>
     <h1>BuildMind</h1>
     <p class="sub">말로 설계하고, 로봇이 조립한다 — AI 설계 블록 조립 협동로봇</p>
-    <div class="meta"><span><b>기간</b> 2026.10.01 – 10.16 (16일)</span><span><b>인원</b> 5인</span><span><b>담당</b> PL · 웹 PC 전체 · YOLO 학습</span><span><b>로봇</b> 두산 M0609 + RG2</span></div>
-    <div class="links">
-      <a href="https://github.com/hwang-injae/buildmind" target="_blank" rel="noopener" class="btn">GitHub</a>
-      <a href="#" data-notion="buildmind" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a>
-      <a href="https://raw.githubusercontent.com/hwang-injae/buildmind/main/docs/images/demo/%EB%8D%B0%EB%AA%A8_AI%EC%84%A4%EA%B3%84%EC%83%9D%EC%84%B1_v1_101715.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a>
-    </div>
+    <div class="meta"><span><b>기간</b> 2026.10.01 – 10.16 (16일)</span><span><b>인원</b> 5인</span><span><b>담당</b> PL · 웹 화면 · AI 설계 · DB · MQTT 브리지 · YOLO 학습</span><span><b>로봇</b> 두산 M0609 + RG2</span></div>
+    <div class="links"><a href="https://github.com/hwang-injae/buildmind" target="_blank" rel="noopener" class="btn">GitHub</a><a href="#" data-notion="buildmind" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a><a href="https://raw.githubusercontent.com/hwang-injae/buildmind/main/docs/images/demo/%EB%8D%B0%EB%AA%A8_AI%EC%84%A4%EA%B3%84%EC%83%9D%EC%84%B1_v1_101715.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a></div>
     <div class="hero-img"><img src="../img/bm/cover.jpg" alt="BuildMind 시연 장면"></div>
-    <div class="stats"><div><b>11 / 11</b><span>설계대로 조립 성공</span></div><div><b>98%</b><span>블록 집기 성공률</span></div><div><b>0.972</b><span>블록 인식 정확도(mAP50)</span></div></div>
-
+    <div class="stats"><div><b>11 / 11</b><span>설계대로 조립 성공 (10/15 실기 통합 시험)</span></div><div><b>98%</b><span>블록 집기 성공 (162회 중 159회)</span></div><div><b>0.972</b><span>블록 인식 mAP50 (yolo26s-seg · 사진 208장)</span></div></div>
     <div class="doc">
       <h2><b>01</b>무엇을 만들었나</h2>
-      <p>사용자가 말이나 글로 "의자 만들어 줘"처럼 요청하면 AI가 블록 설계도를 만들고, 협동로봇 M0609가 손목 카메라로 흩어진 블록을 찾아 설계대로 조립합니다. 설계는 사람이 화면에서 확인하고 승인한 뒤에만 로봇으로 넘어갑니다.</p>
+      <p>사용자가 말이나 글로 "의자 만들어 줘"처럼 요청하면 AI가 블록별 위치 · 방향 · 조립 순서를 담은 설계 후보 3개를 만들고, 규칙 검사와 사람의 승인을 거친 설계만 협동로봇 M0609가 손목 카메라로 흩어진 블록을 찾아 조립합니다. 흐름은 요청 → AI 설계 → 검사 → 승인 → DB 저장 → 로봇 조립 순입니다.</p>
+      <p>ROS가 없는 <strong>웹 PC</strong>(Docker로 띄운 Next.js · FastAPI · PostgreSQL · Mosquitto와 호스트의 Claude Code 중계 · 음성 모듈)와 <strong>로봇 PC</strong>(ROS 2 작업 · 비전 · MoveIt2 · 정지 노드)로 나누고, 두 PC는 MQTT 브리지(d2_bridge) 하나로만 연결했습니다.</p>
       <figure><img src="../img/bm/arch_2400.jpg" alt="BuildMind 시스템 구성도"><figcaption>시스템 구성 — 웹 PC(설계 생성 · DB · 화면)와 로봇 PC(인식 · 조립)를 MQTT로 연결</figcaption><div class="arch-links"><a class="arch-btn" href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fbuildmind%2Fmain%2Fdocs%2Fimages%2F%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EC%2595%2584%25ED%2582%25A4%25ED%2585%258D%25EC%25B2%2598_v7_101320.drawio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="8.5" y="15" width="7" height="5" rx="1"/><path d="M6.5 8v3.5h11V8M12 11.5V15"/></svg>draw.io로 보기</a><a class="arch-btn" href="https://htmlpreview.github.io/?https://github.com/hwang-injae/buildmind/blob/main/docs/images/archify/index.html?v=20261016c#arch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
       <h2><b>02</b>담당 역할</h2>
-      <ul class="list">
-        <li><b>PL</b> — 일정 · PR 규칙 · 결정 기록을 운영하고, 통합 테스트에서 우선순위를 정했습니다.</li>
-        <li><b>AI 설계 생성</b> — LLM이 정해진 JSON 형식으로만 후보 3개를 내고 규칙 검사를 거치게 해, 형식 오류 0건.</li>
-        <li><b>설계 DB</b> — 설계를 부모 · 버전으로 잇는 PostgreSQL 구조, 비슷한 설계를 찾아 참고하는 RAG.</li>
-        <li><b>웹 화면</b> — Next.js · three.js 3D 미리보기, 로봇 카메라 화면, 정지 버튼, 로봇 PC와의 MQTT 브리지.</li>
-        <li><b>YOLO seg 학습</b> — 라벨링 규칙 수립, 학습 조건 5종 비교 후 최종 모델 선정.</li>
-      </ul>
+      <ul class="list"><li><b>PL · 통합</b> — 일정 · PR 규칙 · 결정 기록(123건)을 운영하고, 기능 동결 뒤에는 통합 브랜치에서 자동 시험(2,251개)을 통과한 변경만 main에 넣었습니다.</li><li><b>AI 설계 생성</b> — 호스트에서 Claude Code를 중계해 JSON Schema 구조화 출력으로 후보 3개를 받아 형식 오류 0건을 유지했고, 팀의 8단계 검사기에서 떨어진 사유를 다시 보내 최대 2회 재생성하는 루프를 만들었습니다.</li><li><b>설계 DB</b> — PostgreSQL에 설계를 부모 · 버전 트리로 저장하고, 비슷한 설계의 요약을 AI가 참고하게 하는 RAG를 붙였습니다.</li><li><b>웹 화면 · 브리지</b> — Next.js · three.js 3D 미리보기, 로봇 카메라 화면, 정지 버튼을 만들고, 로봇 PC와의 MQTT 브리지(d2_bridge)와 웹 PC Docker 구성을 맡았습니다.</li><li><b>YOLO seg 학습</b> — 블록 사진 208장의 라벨링 규칙을 세우고, 하이퍼파라미터 조합 비교 학습을 분담해(16조합 중 8개) 최종 모델(yolo26s-seg · 150 epoch)을 골랐습니다.</li></ul>
+      <p class="code-paths"><b>담당 코드</b> <code>web/</code> · <code>src/d2_bridge/</code> · <code>docs/</code></p>
 
-      <h2><b>03</b>막혔던 문제와 해결</h2>
-      <div class="case">
-        <div><h4>상황</h4><p>겹쳐 놓인 블록을 모델이 놓치거나 둘을 하나로 인식했습니다.</p></div>
-        <div><h4>원인</h4><p>라벨링할 때 겹친 블록의 경계를 사람마다 다르게 그려 학습 데이터 기준이 흔들렸습니다.</p></div>
-        <div><h4>해결</h4><p>라벨 규칙을 하나로 정해 다시 라벨링하고, 같은 조건으로 재학습했습니다.</p></div>
-        <div><h4>결과</h4><p>mAP50 0.87 → 0.972. 시연에서 설계대로 조립 11/11.</p></div>
-      </div>
-      <figure><img src="../img/bm/yolo_cmp.png" alt="YOLO 학습 조건 비교"><figcaption>학습 조건 5종 비교 — 최종 조건으로 150 epoch 학습</figcaption></figure>
+      <h2><b>03</b>막혔던 문제와 해결 — 겹친 블록을 못 찾던 YOLO</h2>
+      <div class="case"><div><h4>상황</h4><p>10/8 1차 학습(라벨 v2 · 학습 160장 · 검증 48장)에서 mAP50이 0.87~0.88에 그쳤고, 검증 48장에서 놓친 블록이 100개를 넘었습니다. 흩어진 블록은 찾았지만 다른 블록에 가려진 블록을 놓쳤습니다.</p></div><div><h4>원인</h4><p>가려져 두 조각으로 보이는 블록을 작업자마다 다르게 라벨링해, 학습 데이터의 기준이 흔들렸습니다.</p></div><div><h4>해결</h4><p>"큰 조각 하나만 그 블록으로" 규칙(결정 E-66)으로 통일해 팀이 208장을 다시 라벨링했고, 같은 데이터로 모델 5종 · 조합 16개를 비교 학습해 최종 모델을 골랐습니다.</p></div><div><h4>결과</h4><p>mAP50 0.87 → 0.972(mAP50-95 0.831 · 재현율 0.954). 통합 시험에서 블록 집기 162회 중 159회 성공의 바탕이 됐습니다.</p></div></div>
+      <figure><img src="../img/bm/yolo_cmp.png" alt="YOLO 학습 조건 비교"><figcaption>모델 5종 · 조합 16개 비교 — 최종 yolo26s-seg · 150 epoch</figcaption></figure>
 
-      <h2><b>04</b>끝내지 못한 것</h2>
-      <p class="note">AI 설계 생성은 평균 103초가 걸려 목표인 60초 안에 들지 못했습니다. 검사를 통과한 후보만 남기고 모자란 만큼 다시 만들도록 바꾸면서 시간이 늘었고, 16일 일정에서 기능이 먼저 동작해야 한다고 판단해 생성 전체에 5분 상한을 두는 데서 멈췄습니다. 시간이 더 있었다면 꼭 필요한 규칙만 남기고 완화해 생성 시간과 설계 다양성을 시험했을 것입니다.</p>
+      <h2><b>04</b>남은 과제</h2>
+      <p class="note">AI 설계 생성은 통과 4건 평균 103초(44~151초)가 걸려 목표인 60초 안에 들지 못했습니다. 검사를 통과한 후보만 남기고 모자란 만큼 다시 만들도록 바꾸면서 시간이 늘었고, 16일 일정에서 기능이 먼저 동작해야 한다고 판단해 생성 전체에 5분 상한을 두는 데서 멈췄습니다. 처음 계획한 "사람과 번갈아 쌓는 협동 모드"는 범위에서 빼고 로봇 단독 조립 · 스캔 복제까지 완성했습니다.</p>
 
       <h2><b>05</b>배운 점</h2>
-      <ul class="list">
-        <li>모델을 바꾸기 전에 <b>데이터 기준부터 통일</b>해야 결과가 달라집니다.</li>
-        <li>통신으로 받은 데이터는 <b>지금 실행의 것인지</b>부터 확인해야 합니다. 옛 진행 상태가 남아 화면이 어긋났던 문제를 실행 ID로 걸러 해결했습니다.</li>
-      </ul>
+      <ul class="list"><li>모델을 바꾸기 전에 <b>데이터 기준부터 통일</b>해야 결과가 달라집니다.</li><li><b>통신으로 받은 값은 "지금 실행 것인지"부터 확인합니다.</b> 화면에 이전 실행의 진행 상태가 섞여 보인 원인은 MQTT에 남아 있던 옛 메시지였고, 메시지마다 실행 번호를 붙여 걸러 해결했습니다.</li><li><b>코드만큼 반영 순서가 중요합니다.</b> 코드가 main에 다 있어도 화면 재빌드 → 웹 재시작 → 로봇 PC 빌드 순서가 빠지면 옛 화면 · 설정이 돌아갑니다. 순서를 명령으로 고정했습니다.</li></ul>
 
       <h2><b>06</b>사용 기술</h2>
-      <div class="tags"><span>ROS 2 Jazzy</span><span>두산 M0609 + RG2</span><span>MoveIt2</span><span>RealSense</span><span>YOLO seg</span><span>Claude API</span><span>FastAPI</span><span>Next.js · three.js</span><span>PostgreSQL</span><span>MQTT</span><span>Docker</span></div>
+      <p class="tech-label">담당 기술</p>
+      <div class="tags"><span>Next.js · three.js</span><span>FastAPI</span><span>PostgreSQL</span><span>MQTT (Mosquitto · d2_bridge)</span><span>Claude Code (호스트 브리지)</span><span>YOLO seg</span><span>Docker</span></div>
+      <p class="tech-label">팀 공통 · 연동 환경</p>
+      <div class="tags"><span>ROS 2 Jazzy</span><span>두산 M0609 + RG2</span><span>MoveIt2</span><span>RealSense</span></div>
     </div>
 
     <div class="pager">
       <span></span>
       <a href="prewash.html"><small>다음 프로젝트</small>PreWash-Cell →</a>
     </div>
+
   </main>
 
   <footer class="d-foot">© <span class="year">2026</span> Hwang Injae</footer>
