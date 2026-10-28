@@ -399,6 +399,7 @@ button { cursor: pointer; border: none; outline: none; }
 .feat .work-title { font-size: 1.7rem; margin-bottom: var(--mb075); cursor: default; }
 .feat .work-title a:hover { color: var(--skin-color); }
 .feat .desc { background-color: var(--box-color); border: 1px solid var(--box-border); border-radius: .6rem; padding: 1.1rem 1.3rem; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, .6); text-align: left; transition: transform .35s cubic-bezier(.22,.61,.36,1), border-color .35s, box-shadow .35s; }
+.feat a.desc { display: block; color: inherit; cursor: pointer; }
 .feat .desc:hover { transform: translateY(-4px); border-color: var(--skin-color); box-shadow: 0 18px 40px -18px var(--skin-color); }
 .feat .desc p { font-size: var(--normal-font-size); color: var(--text-color); line-height: 1.6; }
 .feat .work-role { margin-top: .8rem; }
