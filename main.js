@@ -122,7 +122,9 @@ window.addEventListener('load', navHighlighter);
     px = e.clientX; py = e.clientY;
     if (Math.hypot(dx, dy) > 1) rotate(dx, dy);
     el.style.transform = `translate3d(${px - SIZE / 2}px, ${py}px, 0) rotate(${displace}deg)`;
-    if (!shown) { shown = true; el.style.opacity = 1; }
+    // 글자·링크·버튼 위에서는 기본 커서를 보여 주고 화살표는 숨김
+    const nat = e.target.closest && e.target.closest('p, h1, h2, h3, h4, li, span, b, strong, em, small, figcaption, a, button, .work-item, .skills-header, .to-top');
+    el.style.opacity = nat ? 0 : 1; shown = true;
   }, { passive: true });
   document.addEventListener('mouseleave', () => { el.style.opacity = 0; shown = false; });
   document.addEventListener('mouseenter', () => { el.style.opacity = 1; shown = true; });
