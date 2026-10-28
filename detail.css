@@ -50,3 +50,21 @@
 .detail .pager small { display: block; font-size: .7rem; color: var(--text-color-light); }
 .d-foot { text-align: center; font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color-light); padding: 2rem 0; border-top: 1px solid var(--box-border); }
 @media (max-width: 700px) { .detail .stats, .detail .case { grid-template-columns: 1fr; } .d-link:first-child { display: none; } }
+
+/* ===== 구성도 바로가기(draw.io · 아키파이) ===== */
+.detail .arch-links { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .7rem; }
+.detail .arch-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .9rem; border: 1px solid var(--box-border); background: var(--box-color); border-radius: 8px; font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color); transition: color .2s, border-color .2s, transform .25s, box-shadow .25s; }
+.detail .arch-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.detail .arch-btn:hover { color: var(--skin-color); border-color: var(--skin-color); transform: translateY(-2px); box-shadow: 0 10px 24px -14px var(--skin-color); }
+
+/* ===== 호버: 카드 하나만 또렷, 나머지 어둡게 ===== */
+.detail .case div, .detail .stats div { transition: opacity .35s, transform .35s cubic-bezier(.22,.61,.36,1), border-color .35s, box-shadow .35s; }
+.detail .case:hover div:not(:hover), .detail .stats:hover div:not(:hover) { opacity: .4; }
+.detail .case div:hover, .detail .stats div:hover { transform: translateY(-4px); border-color: var(--skin-color); box-shadow: 0 16px 36px -18px var(--skin-color); }
+
+/* ===== 호버: 문장 하나가 빛남 (담당 역할 · 배운 점) ===== */
+.detail .list li { border-radius: .5rem; margin-left: -.6rem; padding-left: 1.8rem; padding-right: .6rem; padding-top: .2rem; padding-bottom: .2rem; transition: background .3s, color .3s, text-shadow .3s; }
+.detail .list li::before { left: .6rem; transition: text-shadow .3s, transform .3s; }
+.detail .list li:hover { background: color-mix(in srgb, var(--skin-color) 12%, transparent); color: var(--title-color); text-shadow: 0 0 14px color-mix(in srgb, var(--skin-color) 55%, transparent); }
+.detail .list li:hover::before { text-shadow: 0 0 10px var(--skin-color); transform: translateX(2px); }
+.detail .list li:hover b { color: var(--skin-color); }

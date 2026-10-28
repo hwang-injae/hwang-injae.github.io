@@ -7,7 +7,7 @@
   <meta name="description" content="AI 설계 블록 조립 협동로봇 BuildMind — PL · AI 설계 생성 · 설계 DB · 웹 화면 · YOLO seg 학습">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=1">
+  <link rel="stylesheet" href="../detail.css?v=2">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -32,9 +32,9 @@
     <div class="doc">
       <h2><b>01</b>무엇을 만들었나</h2>
       <p>사용자가 말이나 글로 "의자 만들어 줘"처럼 요청하면 AI가 블록 설계도를 만들고, 협동로봇 M0609가 손목 카메라로 흩어진 블록을 찾아 설계대로 조립합니다. 설계는 사람이 화면에서 확인하고 승인한 뒤에만 로봇으로 넘어갑니다.</p>
-      <figure><img src="../img/bm/arch_2400.jpg" alt="BuildMind 시스템 구성도"><figcaption>시스템 구성 — 웹 PC(설계 생성 · DB · 화면)와 로봇 PC(인식 · 조립)를 MQTT로 연결</figcaption></figure>
+      <figure><img src="../img/bm/arch_2400.jpg" alt="BuildMind 시스템 구성도"><figcaption>시스템 구성 — 웹 PC(설계 생성 · DB · 화면)와 로봇 PC(인식 · 조립)를 MQTT로 연결</figcaption><div class="arch-links"><a class="arch-btn" href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fbuildmind%2Fmain%2Fdocs%2Fimages%2F%25EC%258B%259C%25EC%258A%25A4%25ED%2585%259C%25EC%2595%2584%25ED%2582%25A4%25ED%2585%258D%25EC%25B2%2598_v7_101320.drawio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="8.5" y="15" width="7" height="5" rx="1"/><path d="M6.5 8v3.5h11V8M12 11.5V15"/></svg>draw.io로 보기</a><a class="arch-btn" href="https://htmlpreview.github.io/?https://github.com/hwang-injae/buildmind/blob/main/docs/images/archify/index.html?v=20261016c#arch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
-      <h2><b>02</b>내가 한 일</h2>
+      <h2><b>02</b>담당 역할</h2>
       <ul class="list">
         <li><b>PL</b> — 일정 · PR 규칙 · 결정 기록을 운영하고, 통합 테스트에서 우선순위를 정했습니다.</li>
         <li><b>AI 설계 생성</b> — LLM이 정해진 JSON 형식으로만 후보 3개를 내고 규칙 검사를 거치게 해, 형식 오류 0건.</li>

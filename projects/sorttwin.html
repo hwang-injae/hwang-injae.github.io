@@ -7,7 +7,7 @@
   <meta name="description" content="AMR × 협동로봇 택배 분류 Digital Twin SortTwin — P3020 입고 Pick & Place · 출고 첫 버전 · Vision 연동">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=1">
+  <link rel="stylesheet" href="../detail.css?v=2">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -32,9 +32,9 @@
     <div class="doc">
       <h2><b>01</b>무엇을 만들었나</h2>
       <p>입고 AMR이 박스를 싣고 오면 P3020이 RGB-D 카메라로 박스를 찾아 컨베이어에 올리고, 컨베이어가 분류해 불량 박스는 출고 로봇 앞까지 보내는 공정입니다. 전부 Isaac Sim 안의 디지털 트윈으로 돌아갑니다.</p>
-      <figure><img src="../img/dt/top.jpg" alt="SortTwin 공정 전경"><figcaption>공정 전경 — 입고 AMR · P3020 · 컨베이어 · 출고 로봇</figcaption></figure>
+      <figure><img src="../img/dt/top.jpg" alt="SortTwin 공정 전경"><figcaption>공정 전경 — 입고 AMR · P3020 · 컨베이어 · 출고 로봇</figcaption><div class="arch-links"><a class="arch-btn" href="https://cobot3-ws-c2-architectures.netlify.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
-      <h2><b>02</b>내가 한 일</h2>
+      <h2><b>02</b>담당 역할</h2>
       <ul class="list">
         <li><b>P3020 입고 Pick &amp; Place</b> — 8단계 상태 기계, Lula IK, 로봇 위치는 USD에서 읽어 자동 반영.</li>
         <li><b>Vision 연동</b> — 검출 픽셀 좌표와 깊이 값을 3D 좌표로 바꾸고 거리 · 색 · 높이 3단 필터로 오검출 제거.</li>

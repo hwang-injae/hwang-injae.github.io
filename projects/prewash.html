@@ -7,7 +7,7 @@
   <meta name="description" content="다회용기 예비세척 자동화 셀 PreWash-Cell — PM · 인터페이스 · 운영 화면 · 셀 통합">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=1">
+  <link rel="stylesheet" href="../detail.css?v=2">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -32,9 +32,9 @@
     <div class="doc">
       <h2><b>01</b>무엇을 만들었나</h2>
       <p>버튼 한 번으로 협동로봇이 집기 → 잔반 판정 → 닦기 → 헹굼 → 적재까지 처리하는 세척 셀입니다. 카메라를 쓸 수 없는 조건이라 파지 폭 · 무게 · 힘 값으로 용기 상태를 판단합니다.</p>
-      <figure><img src="../img/pw/arch.jpg" alt="PreWash-Cell 구성도"><figcaption>셀 구성 — 로봇 제어 노드 · 운영 화면 · 기록 DB</figcaption></figure>
+      <figure><img src="../img/pw/arch.jpg" alt="PreWash-Cell 구성도"><figcaption>셀 구성 — 로봇 제어 노드 · 운영 화면 · 기록 DB</figcaption><div class="arch-links"><a class="arch-btn" href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fprewash-cell%2Fmain%2Fdocs%2Fimages%2Fsystem_architecture.drawio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="8.5" y="15" width="7" height="5" rx="1"/><path d="M6.5 8v3.5h11V8M12 11.5V15"/></svg>draw.io로 보기</a><a class="arch-btn" href="https://hwang-injae.github.io/prewash-cell/images/archify/index.html#arch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
-      <h2><b>02</b>내가 한 일</h2>
+      <h2><b>02</b>담당 역할</h2>
       <ul class="list">
         <li><b>PM · 인터페이스</b> — 함수 계약과 메시지를 먼저 고정해 4명이 로봇 없이 병렬로 개발하게 했습니다.</li>
         <li><b>운영 화면 · 기록 DB</b> — 현장 작업자용 화면과 용기별 처리 기록 DB. 버튼 응답 7~96 ms.</li>
