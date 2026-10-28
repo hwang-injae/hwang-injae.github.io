@@ -7,7 +7,7 @@
   <meta name="description" content="다회용기 예비세척 자동화 셀 PreWash-Cell — PM · 인터페이스 · 운영 화면 · 셀 통합">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=3">
+  <link rel="stylesheet" href="../detail.css?v=4">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -23,16 +23,16 @@
     <div class="meta"><span><b>기간</b> 2026.09 (13일)</span><span><b>인원</b> 4인</span><span><b>담당</b> PM · 인터페이스 · 운영 화면(HMI) · 기록 DB · 셀 통합</span><span><b>로봇</b> 두산 M0609 + RG2</span></div>
     <div class="links"><a href="https://github.com/hwang-injae/prewash-cell" target="_blank" rel="noopener" class="btn">GitHub</a><a href="#" data-notion="prewash" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a><a href="https://raw.githubusercontent.com/hwang-injae/prewash-cell/main/docs/images/demo/demo_cup_wipe.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a></div>
     <div class="hero-img"><img src="../img/pw/hero.jpg" alt="PreWash-Cell 시연 장면"></div>
-    <div class="stats"><div><b>약 13분</b><span>배속 1.0 무정지 완주 (그릇 2 · 컵 2)</span></div><div><b>7 / 7</b><span>수락 기준 충족 (AC-1~7)</span></div><div><b>7 / 8</b><span>예외 복구 실기 확인 (로봇 오류는 자동 시험)</span></div></div>
+    <div class="stats"><div><b>약 13분</b><span>배속 1.0 무정지 완주 (그릇 2 · 컵 2)</span></div><div><b>7 / 7</b><span>수락 기준 충족 (AC-1~7)</span></div><div><b>8 종</b><span>예외 처리 (7종 실기 복구 + 로봇 오류 안전망)</span></div></div>
     <div class="doc">
       <h2><b>01</b>무엇을 만들었나</h2>
-      <p>시작 버튼 한 번으로 협동로봇이 용기 집기 → 무게로 잔반 판정 · 털기 → 수세미 · 솔 세척 → 헹굼 → 팔레트 적재를 연속 수행하고, 용기별 이력을 기록하는 셀입니다. 카메라 없이 그리퍼 파지 폭과 관절 토크 기반 무게 · 힘 신호만으로 용기 상태를 판단합니다.</p>
+      <p>시작 버튼 한 번으로 협동로봇이 용기 집기 → 무게로 잔반 판정 · 털기 → 수세미 · 솔 세척 → 헹굼 → 팔레트 적재를 연속 수행하고, 용기별 이력을 기록하는 셀입니다. 카메라 없이 그리퍼 파지 폭과 관절 토크 기반 무게 · 힘 신호만으로 용기 상태를 판단합니다. 예외 7종(케이블 이상 · 툴 놓침 · 잔반 남음 · 툴 집기 실패 · 일시 정지 · 중단 · 빈 구역)은 재시도 · 격리 · 정지 · 재개를 미리 정해 두었고, 그 밖의 로봇 오류(보호 정지 등)는 모두 하나의 안전망으로 받아 셀이 죽지 않고 그 자리에 멈춘 뒤 사람 신호로 재개합니다.</p>
       <p>유선 <strong>로봇 PC</strong>(flow_node)와 무선 <strong>웹 PC</strong>(hmi_bridge · Next.js · SQLite)를 Fast DDS Discovery Server로 이었고, 13개 동작은 ROS 노드가 아니라 파이썬 함수로 만들어 flow_node 한 곳에서만 호출합니다. 두산 드라이버 API가 명령마다 내부 실행기를 돌리기 때문에, 콜백 안에서 로봇 명령을 부르면 멈추는 문제를 피하려고 택한 구조입니다.</p>
       <figure><img src="../img/pw/arch.jpg" alt="PreWash-Cell 구성도"><figcaption>셀 구성 — 로봇 제어 노드 · 운영 화면 · 기록 DB</figcaption><div class="arch-links"><a class="arch-btn" href="https://viewer.diagrams.net/?lightbox=1&nav=1#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhwang-injae%2Fprewash-cell%2Fmain%2Fdocs%2Fimages%2Fsystem_architecture.drawio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="8.5" y="15" width="7" height="5" rx="1"/><path d="M6.5 8v3.5h11V8M12 11.5V15"/></svg>draw.io로 보기</a><a class="arch-btn" href="https://hwang-injae.github.io/prewash-cell/images/archify/index.html#arch" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
       <h2><b>02</b>담당 역할</h2>
       <ul class="list"><li><b>PM · 인터페이스</b> — 13개 함수 계약(cobot_api)과 메시지(cobot_msgs), Mock 실행기를 먼저 고정해 4명이 로봇 1대를 나눠 쓰면서도 로봇 없이 병렬로 개발 · 시험하게 했습니다(자동 시험 616개).</li><li><b>운영 화면 · 기록 DB</b> — FastAPI · WebSocket 브리지와 Next.js 화면(시작 · 일시 정지 · 재개 · 중단, 멈춤 원인 안내, 누적 KPI), SQLite 기록 DB(표 5개)를 만들었습니다. 무선으로 이은 두 PC에서 버튼 응답 7~96 ms · 기록 누락 0건을 확인했습니다.</li><li><b>무게 측정 안정화</b> — 값이 자세 · 시간에 따라 출렁이던 원인을 그리퍼 케이블 장력으로 좁히고, 케이블 여유 · 측정 자세 · 기준값 측정 절차를 정했습니다.</li><li><b>셀 통합 · 실기 운용</b> — 9/22부터 통합을 맡아 9/23 기능 동결과 "기본 흐름은 유지하고 예외 처리만 고친다" 원칙을 정했고, 배속 1.0 무정지 완주까지 끌고 갔습니다.</li></ul>
-      <p class="code-paths"><b>담당 코드</b> <code>src/cobot_api/</code> · <code>src/cobot_msgs/</code> · <code>src/f4_hmi/</code> · <code>docs/</code></p>
+      <p class="code-paths"><b>담당 코드</b> <a href="https://github.com/hwang-injae/prewash-cell/tree/main/src/cobot_api/" target="_blank" rel="noopener"><code>src/cobot_api/</code></a> · <a href="https://github.com/hwang-injae/prewash-cell/tree/main/src/cobot_msgs/" target="_blank" rel="noopener"><code>src/cobot_msgs/</code></a> · <a href="https://github.com/hwang-injae/prewash-cell/tree/main/src/f4_hmi/" target="_blank" rel="noopener"><code>src/f4_hmi/</code></a> · <a href="https://github.com/hwang-injae/prewash-cell/tree/main/docs/" target="_blank" rel="noopener"><code>docs/</code></a></p>
 
       <h2><b>03</b>막혔던 문제와 해결 — 두 번째 명령부터 멈추던 로봇</h2>
       <div class="case"><div><h4>상황</h4><p>팀원이 발견한 현상으로, 서비스 콜백 안에서 로봇 명령을 부르면 두 번째 호출부터 멈춰 연속 동작이 되지 않았습니다.</p></div><div><h4>원인</h4><p>두산 드라이버(doosan-robot2) API가 명령마다 내부 실행기를 직접 돌리는 구조라, ROS 2 콜백과 겹치며 교착이 생겼습니다. 실행기를 바꾸는 것만으로는 풀리지 않는 문제였습니다.</p></div><div><h4>해결</h4><p>실제 드라이버로 재현한 뒤 실행 구조 5종을 비교 시험해, 각 동작을 파이썬 함수로 빼고 로봇 명령은 flow_node 메인 스레드 한 곳에서만 내리게 바꿨습니다.</p></div><div><h4>결과</h4><p>연속 6회 호출 성공과 상태 토픽(/flow/state) 2 Hz 정상 발행을 확인했고, 이후 무정지 완주의 바탕이 됐습니다.</p></div></div>

@@ -7,7 +7,7 @@
   <meta name="description" content="AMR × 협동로봇 택배 분류 Digital Twin SortTwin — P3020 입고 Pick & Place · 출고 첫 버전 · Vision 연동">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css?v=24">
-  <link rel="stylesheet" href="../detail.css?v=3">
+  <link rel="stylesheet" href="../detail.css?v=4">
 </head>
 <body>
   <div class="d-top"><div class="d-top-in">
@@ -31,8 +31,8 @@
       <figure><img src="../img/dt/top.jpg" alt="SortTwin 공정 전경"><figcaption>공정 전경 — 입고 AMR · P3020 IN · 컨베이어 · P3020 OUT</figcaption><div class="arch-links"><a class="arch-btn" href="https://cobot3-ws-c2-architectures.netlify.app/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>아키파이로 보기</a></div></figure>
 
       <h2><b>02</b>담당 역할</h2>
-      <ul class="list"><li><b>P3020 IN Pick &amp; Place</b> — 8단계 상태 기계(접근 → 하강 → 파지 → 들기 → 이동 → 내리기 → 놓기 → 완료)와 Lula IK로 박스를 집어 컨베이어에 올립니다. 박스 위치에 맞춰 그리퍼 방향(yaw)을 정하고, 로봇 베이스 좌표는 USD에서 읽어 맵이 바뀌어도 자동으로 맞춥니다.</li><li><b>비전 결과 연동</b> — 팀원(서진우)이 학습 · 배포한 YOLO ONNX 검출 픽셀(/box_pixel)에 Depth를 결합해 world 3D 좌표를 계산하고, 중간 높이(0.35 m)에서 다시 검출해 보정합니다. 오검출은 깊이 0.4 m 미만(팔 · 그리퍼 자신) → 박스 색 아님(그림자) → world Z 0.30 m 미만(노란 AMR 몸체) 세 단계로 걸렀습니다.</li><li><b>반복 처리 · 종료 신호</b> — 박스 수를 미리 정하지 않고 화물이 빌 때까지 반복하며, 박스 단위 진행은 피드백으로, 작업 종료는 5초 미검출 신호(CARGO_EMPTY) 하나로 나눠 AMR 복귀를 요청합니다.</li><li><b>액션 서버 · P3020 OUT</b> — pick_place 액션 서버를 호스트 프로세스로 분리했고(03), IN 에이전트의 흐름 · IK · 비전 로직을 재사용해 Reject Line의 박스를 Reject Bin에 적재하는 출고 에이전트를 만들고 적재 계획 모듈(OutboundLoadPlanner)을 처음 연결했습니다. 최종 통합에서 남은 문제는 제출 뒤 팀장이 보완했습니다.</li></ul>
-      <p class="code-paths"><b>담당 코드</b> <code>isaac_sim/robots/p3020/p3020_mission_agent.py</code> · <code>isaac_sim/robots/p3020/p3020_out_mission_agent.py</code> · <code>ros2_ws (pick_place 액션 서버)</code></p>
+      <ul class="list"><li><b>P3020 IN Pick &amp; Place</b> — 8단계 상태 기계(접근 → 하강 → 파지 → 들기 → 이동 → 내리기 → 놓기 → 완료)와 Lula IK로 박스를 집어 컨베이어에 올립니다. 박스 위치에 맞춰 그리퍼 방향(yaw)을 정하고, 로봇 베이스 좌표는 USD에서 읽어 맵이 바뀌어도 자동으로 맞춥니다.</li><li><b>비전 결과 연동</b> — 팀원이 학습해 배포한 YOLO 모델의 검출 픽셀(/box_pixel)과 Depth를 결합해 world 3D 좌표를 계산하고, 중간 높이(0.35 m)에서 다시 검출해 보정합니다. 오검출은 깊이 0.4 m 미만(팔 · 그리퍼 자신) → 박스 색 아님(그림자) → world Z 0.30 m 미만(노란 AMR 몸체) 세 단계로 걸렀습니다.</li><li><b>반복 처리 · 종료 신호</b> — 박스 수를 미리 정하지 않고 화물이 빌 때까지 반복하며, 박스 단위 진행은 피드백으로, 작업 종료는 5초 미검출 신호(CARGO_EMPTY) 하나로 나눠 AMR 복귀를 요청합니다.</li><li><b>액션 서버 · P3020 OUT</b> — pick_place 액션 서버를 호스트 프로세스로 분리했고(03), IN 에이전트의 흐름 · IK · 비전 로직을 재사용해 Reject Line의 박스를 Reject Bin에 적재하는 출고 에이전트를 만들고 적재 계획 모듈(OutboundLoadPlanner)을 처음 연결했습니다.</li></ul>
+      <p class="code-paths"><b>담당 코드</b> <a href="https://github.com/hwang-injae/amr-cobot-sorting/blob/main/isaac_sim/robots/p3020/p3020_mission_agent.py" target="_blank" rel="noopener"><code>isaac_sim/robots/p3020/p3020_mission_agent.py</code></a> · <a href="https://github.com/hwang-injae/amr-cobot-sorting/blob/main/isaac_sim/robots/p3020/p3020_out_mission_agent.py" target="_blank" rel="noopener"><code>isaac_sim/robots/p3020/p3020_out_mission_agent.py</code></a> · <a href="https://github.com/hwang-injae/amr-cobot-sorting/blob/main/ros2_ws/src/arm_controller/arm_controller/pick_place_action_server.py" target="_blank" rel="noopener"><code>ros2_ws/src/arm_controller/arm_controller/pick_place_action_server.py</code></a></p>
 
       <h2><b>03</b>막혔던 문제와 해결 — 두 Python 사이에서 깨지던 액션</h2>
       <div class="case"><div><h4>상황</h4><p>Isaac Sim 안에서 커스텀 액션(/p3020/pick_place)을 직접 처리하려 하자 메시지 타입 오류가 났습니다.</p></div><div><h4>원인</h4><p>Isaac Sim 내장 Python(3.11)과 시스템 ROS 2 Jazzy(Python 3.12)의 런타임이 달라, 사용자 정의 인터페이스를 두 쪽이 공유할 수 없었습니다.</p></div><div><h4>해결</h4><p>Docker · 내장 라이브러리 재빌드는 2주 일정에 위험이 커 보류하고, 액션 서버를 호스트 Python 3.12 프로세스로 분리한 뒤 Isaac Sim 에이전트와는 표준 타입 토픽 2개로만 명령 · 피드백을 주고받게 했습니다.</p></div><div><h4>결과</h4><p>두 환경을 고치지 않고도 액션 Goal 수락 · 피드백과 CARGO_EMPTY 복귀까지 전체 미션이 끊기지 않고 이어졌습니다.</p></div></div>
