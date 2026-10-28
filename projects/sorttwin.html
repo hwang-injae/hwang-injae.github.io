@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SortTwin | 황인재</title>
+  <meta name="description" content="AMR × 협동로봇 택배 분류 Digital Twin SortTwin — P3020 입고 Pick & Place · 출고 첫 버전 · Vision 연동">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css?v=30">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a href="../" class="brand"><span class="mark">H</span>황인재</a>
+      <nav class="menu" aria-label="주 메뉴">
+        <a href="../#about"><b>01.</b>About</a>
+        <a href="../#journey"><b>02.</b>Journey</a>
+        <a href="../#skills"><b>03.</b>Skills</a>
+        <a href="../#projects" class="on"><b>04.</b>Projects</a>
+        <a href="../#contact"><b>05.</b>Contact</a>
+        <a href="../portfolio.pdf" target="_blank" rel="noopener" class="btn">Portfolio PDF</a>
+      </nav>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <button class="theme" id="theme" aria-label="다크 / 라이트 모드"></button>
+        <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail">
+    <a href="../#projects" class="back">← 프로젝트 목록</a>
+    <p class="kind">Project 3 · Digital Twin</p>
+    <h1>SortTwin</h1>
+    <p class="sub">AMR이 가져온 박스를 협동로봇이 카메라로 찾아 집고, 컨베이어로 분류하는 공정을 Isaac Sim에 구현</p>
+    <div class="meta"><span><b>기간</b> 2026.08 (2주)</span><span><b>인원</b> 4인</span><span><b>담당</b> P3020 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동</span><span><b>환경</b> Isaac Sim 5.1</span></div>
+    <div class="links">
+      <a href="https://github.com/hwang-injae/amr-cobot-sorting" target="_blank" rel="noopener" class="btn">GitHub</a>
+      <a href="#" data-notion="sorttwin" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a>
+      <a href="https://raw.githubusercontent.com/hwang-injae/amr-cobot-sorting/main/docs/screenshots/top-view-x5.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a>
+    </div>
+    <div class="hero-img"><img src="../img/dt/hero.jpg" alt="SortTwin 시뮬레이션 장면"></div>
+    <div class="stats"><div><b>1 미션</b><span>입고 → 분류 한 흐름으로 연결</span></div><div><b>8 단계</b><span>Pick &amp; Place 상태 기계</span></div><div><b>3 단</b><span>오검출 필터(거리 · 색 · 높이)</span></div></div>
+
+    <div class="doc">
+      <h2><b>01</b>무엇을 만들었나</h2>
+      <p>입고 AMR이 박스를 싣고 오면 P3020이 RGB-D 카메라로 박스를 찾아 컨베이어에 올리고, 컨베이어가 분류해 불량 박스는 출고 로봇 앞까지 보내는 공정입니다. 전부 Isaac Sim 안의 디지털 트윈으로 돌아갑니다.</p>
+      <figure><img src="../img/dt/top.jpg" alt="SortTwin 공정 전경"><figcaption>공정 전경 — 입고 AMR · P3020 · 컨베이어 · 출고 로봇</figcaption></figure>
+
+      <h2><b>02</b>내가 한 일</h2>
+      <ul class="list">
+        <li><b>P3020 입고 Pick &amp; Place</b> — 8단계 상태 기계, Lula IK, 로봇 위치는 USD에서 읽어 자동 반영.</li>
+        <li><b>Vision 연동</b> — 검출 픽셀 좌표와 깊이 값을 3D 좌표로 바꾸고 거리 · 색 · 높이 3단 필터로 오검출 제거.</li>
+        <li><b>반복 처리</b> — 화물이 빌 때까지 반복하고, 5초 미검출이면 AMR을 복귀시키는 규칙.</li>
+        <li><b>출고 첫 버전</b> — 입고 코드를 재사용해 출고 로봇의 첫 버전을 작성(이후 보완은 팀장).</li>
+      </ul>
+
+      <h2><b>03</b>막혔던 문제와 해결</h2>
+      <div class="case">
+        <div><h4>상황</h4><p>Isaac Sim 쪽과 ROS 2 쪽 코드가 같은 메시지 타입을 두고 서로 읽지 못했습니다.</p></div>
+        <div><h4>원인</h4><p>Isaac Sim은 Python 3.11, ROS 2 Jazzy는 Python 3.12로 돌아가 사용자 정의 타입이 맞지 않았습니다.</p></div>
+        <div><h4>해결</h4><p>Docker · 내장 라이브러리 재빌드는 보류하고, 액션 서버를 별도 프로세스로 분리한 뒤 표준 타입 토픽 2개로만 주고받게 했습니다.</p></div>
+        <div><h4>결과</h4><p>두 환경을 그대로 두고도 한 미션이 끊기지 않고 이어졌습니다.</p></div>
+      </div>
+
+      <h2><b>04</b>배운 점</h2>
+      <ul class="list">
+        <li>좌표계 차이는 <b>통합 단계에서야 드러나므로</b> 센서 · 로봇 좌표 기준을 먼저 맞춰야 합니다.</li>
+        <li>환경을 억지로 맞추기보다 <b>경계를 단순한 표준 타입</b>으로 두는 쪽이 빠르고 안정적일 때가 있습니다.</li>
+      </ul>
+
+      <h2><b>05</b>사용 기술</h2>
+      <div class="tags"><span>Isaac Sim 5.1</span><span>ROS 2 Jazzy</span><span>Lula IK</span><span>ROS 2 Action</span><span>RGB-D</span><span>USD</span><span>Python</span></div>
+    </div>
+
+    <div class="pager">
+      <a href="prewash.html"><small>이전 프로젝트</small>← PreWash-Cell</a>
+      <span></span>
+    </div>
+  </main>
+
+  <footer>© <span class="year">2026</span> Hwang Injae</footer>
+  <script src="../main.js?v=30"></script>
+</body>
+</html>

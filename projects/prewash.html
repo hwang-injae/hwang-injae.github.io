@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PreWash-Cell | 황인재</title>
+  <meta name="description" content="다회용기 예비세척 자동화 셀 PreWash-Cell — PM · 인터페이스 · 운영 화면 · 셀 통합">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css?v=30">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a href="../" class="brand"><span class="mark">H</span>황인재</a>
+      <nav class="menu" aria-label="주 메뉴">
+        <a href="../#about"><b>01.</b>About</a>
+        <a href="../#journey"><b>02.</b>Journey</a>
+        <a href="../#skills"><b>03.</b>Skills</a>
+        <a href="../#projects" class="on"><b>04.</b>Projects</a>
+        <a href="../#contact"><b>05.</b>Contact</a>
+        <a href="../portfolio.pdf" target="_blank" rel="noopener" class="btn">Portfolio PDF</a>
+      </nav>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <button class="theme" id="theme" aria-label="다크 / 라이트 모드"></button>
+        <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail">
+    <a href="../#projects" class="back">← 프로젝트 목록</a>
+    <p class="kind">Project 2 · 협동로봇 실기</p>
+    <h1>PreWash-Cell</h1>
+    <p class="sub">협동로봇 1대가 다회용기를 집고, 잔반을 판정하고, 닦아서 세척기 팔레트에 꽂는다</p>
+    <div class="meta"><span><b>기간</b> 2026.09 (13일)</span><span><b>인원</b> 4인</span><span><b>담당</b> PM · 인터페이스 · 운영 화면(HMI) · 기록 DB · 셀 통합</span><span><b>로봇</b> 두산 M0609 + RG2</span></div>
+    <div class="links">
+      <a href="https://github.com/hwang-injae/prewash-cell" target="_blank" rel="noopener" class="btn">GitHub</a>
+      <a href="#" data-notion="prewash" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a>
+      <a href="https://raw.githubusercontent.com/hwang-injae/prewash-cell/main/docs/images/demo/demo_cup_wipe.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a>
+    </div>
+    <div class="hero-img"><img src="../img/pw/hero.jpg" alt="PreWash-Cell 시연 장면"></div>
+    <div class="stats"><div><b>약 13분</b><span>배속 1.0 무정지 완주</span></div><div><b>7 / 7</b><span>수락 기준 충족</span></div><div><b>7종</b><span>예외 상황 실기 복구</span></div></div>
+
+    <div class="doc">
+      <h2><b>01</b>무엇을 만들었나</h2>
+      <p>버튼 한 번으로 협동로봇이 집기 → 잔반 판정 → 닦기 → 헹굼 → 적재까지 처리하는 세척 셀입니다. 카메라를 쓸 수 없는 조건이라 파지 폭 · 무게 · 힘 값으로 용기 상태를 판단합니다.</p>
+      <figure><img src="../img/pw/arch.jpg" alt="PreWash-Cell 구성도"><figcaption>셀 구성 — 로봇 제어 노드 · 운영 화면 · 기록 DB</figcaption></figure>
+
+      <h2><b>02</b>내가 한 일</h2>
+      <ul class="list">
+        <li><b>PM · 인터페이스</b> — 함수 계약과 메시지를 먼저 고정해 4명이 로봇 없이 병렬로 개발하게 했습니다.</li>
+        <li><b>운영 화면 · 기록 DB</b> — 현장 작업자용 화면과 용기별 처리 기록 DB. 버튼 응답 7~96 ms.</li>
+        <li><b>무게 측정 안정화</b> — 측정 오차의 원인을 케이블 장력으로 좁혀 보정 절차를 정했습니다.</li>
+        <li><b>셀 통합</b> — 9/22부터 통합을 맡아 배속 1.0 무정지 완주까지 끌고 갔습니다.</li>
+      </ul>
+
+      <h2><b>03</b>막혔던 문제와 해결</h2>
+      <div class="case">
+        <div><h4>상황</h4><p>로봇 명령이 두 번째 호출부터 멈춰 연속 동작이 되지 않았습니다.</p></div>
+        <div><h4>원인</h4><p>ROS 2 콜백 안에서 로봇 명령을 호출해 실행 스레드가 서로 막혔습니다.</p></div>
+        <div><h4>해결</h4><p>실행 방식 5종을 비교 시험한 뒤, 로봇 명령을 메인 스레드 한 곳으로 모으는 구조를 택했습니다.</p></div>
+        <div><h4>결과</h4><p>연속 6회 성공, 이후 무정지 완주의 바탕이 되었습니다.</p></div>
+      </div>
+      <h2><b>03-2</b>무게 측정이 흔들린 문제</h2>
+      <div class="case">
+        <div><h4>상황</h4><p>같은 용기인데 경로에 따라 무게가 약 90 g까지 다르게 읽혔습니다.</p></div>
+        <div><h4>원인</h4><p>그리퍼 케이블의 장력이 자세마다 달라져 힘 센서 값에 섞였습니다.</p></div>
+        <div><h4>해결</h4><p>케이블 여유 확보, HOME 경유, 실행 직전 기준값 측정, 30회 중앙값 사용.</p></div>
+        <div><h4>결과</h4><p>96 g 용기 오차 +3 g, 잔반 4/4 감지, 오판 0/8.</p></div>
+      </div>
+
+      <h2><b>04</b>배운 점</h2>
+      <ul class="list">
+        <li>인터페이스를 먼저 고정하면 로봇 한 대로도 팀 전체가 <b>동시에</b> 일할 수 있습니다.</li>
+        <li>센서 값이 흔들리면 코드보다 <b>케이블 · 자세 같은 물리 조건</b>을 먼저 의심해야 합니다.</li>
+      </ul>
+
+      <h2><b>05</b>사용 기술</h2>
+      <div class="tags"><span>ROS 2 Jazzy</span><span>두산 M0609 + RG2</span><span>힘 제어</span><span>FastAPI</span><span>Next.js</span><span>SQLite</span><span>Fast DDS</span><span>pytest · Mock</span></div>
+    </div>
+
+    <div class="pager">
+      <a href="buildmind.html"><small>이전 프로젝트</small>← BuildMind</a>
+      <a href="sorttwin.html"><small>다음 프로젝트</small>SortTwin →</a>
+    </div>
+  </main>
+
+  <footer>© <span class="year">2026</span> Hwang Injae</footer>
+  <script src="../main.js?v=30"></script>
+</body>
+</html>

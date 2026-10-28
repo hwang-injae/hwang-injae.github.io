@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildMind | 황인재</title>
+  <meta name="description" content="AI 설계 블록 조립 협동로봇 BuildMind — PL · AI 설계 생성 · 설계 DB · 웹 화면 · YOLO seg 학습">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css?v=30">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a href="../" class="brand"><span class="mark">H</span>황인재</a>
+      <nav class="menu" aria-label="주 메뉴">
+        <a href="../#about"><b>01.</b>About</a>
+        <a href="../#journey"><b>02.</b>Journey</a>
+        <a href="../#skills"><b>03.</b>Skills</a>
+        <a href="../#projects" class="on"><b>04.</b>Projects</a>
+        <a href="../#contact"><b>05.</b>Contact</a>
+        <a href="../portfolio.pdf" target="_blank" rel="noopener" class="btn">Portfolio PDF</a>
+      </nav>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <button class="theme" id="theme" aria-label="다크 / 라이트 모드"></button>
+        <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="detail">
+    <a href="../#projects" class="back">← 프로젝트 목록</a>
+    <p class="kind">Project 1 · 협동로봇 실기</p>
+    <h1>BuildMind</h1>
+    <p class="sub">말로 설계하고, 로봇이 조립한다 — AI 설계 블록 조립 협동로봇</p>
+    <div class="meta"><span><b>기간</b> 2026.10.01 – 10.16 (16일)</span><span><b>인원</b> 5인</span><span><b>담당</b> PL · 웹 PC 전체 · YOLO 학습</span><span><b>로봇</b> 두산 M0609 + RG2</span></div>
+    <div class="links">
+      <a href="https://github.com/hwang-injae/buildmind" target="_blank" rel="noopener" class="btn">GitHub</a>
+      <a href="#" data-notion="buildmind" target="_blank" rel="noopener" class="btn ghost">Notion 정리</a>
+      <a href="https://raw.githubusercontent.com/hwang-injae/buildmind/main/docs/images/demo/%EB%8D%B0%EB%AA%A8_AI%EC%84%A4%EA%B3%84%EC%83%9D%EC%84%B1_v1_101715.gif" target="_blank" rel="noopener" class="btn ghost">시연 영상</a>
+    </div>
+    <div class="hero-img"><img src="../img/bm/cover.jpg" alt="BuildMind 시연 장면"></div>
+    <div class="stats"><div><b>11 / 11</b><span>설계대로 조립 성공</span></div><div><b>98%</b><span>블록 집기 성공률</span></div><div><b>0.972</b><span>블록 인식 정확도(mAP50)</span></div></div>
+
+    <div class="doc">
+      <h2><b>01</b>무엇을 만들었나</h2>
+      <p>사용자가 말이나 글로 "의자 만들어 줘"처럼 요청하면 AI가 블록 설계도를 만들고, 협동로봇 M0609가 손목 카메라로 흩어진 블록을 찾아 설계대로 조립합니다. 설계는 사람이 화면에서 확인하고 승인한 뒤에만 로봇으로 넘어갑니다.</p>
+      <figure><img src="../img/bm/arch_2400.jpg" alt="BuildMind 시스템 구성도"><figcaption>시스템 구성 — 웹 PC(설계 생성 · DB · 화면)와 로봇 PC(인식 · 조립)를 MQTT로 연결</figcaption></figure>
+
+      <h2><b>02</b>내가 한 일</h2>
+      <ul class="list">
+        <li><b>PL</b> — 일정 · PR 규칙 · 결정 기록을 운영하고, 통합 테스트에서 우선순위를 정했습니다.</li>
+        <li><b>AI 설계 생성</b> — LLM이 정해진 JSON 형식으로만 후보 3개를 내고 규칙 검사를 거치게 해, 형식 오류 0건.</li>
+        <li><b>설계 DB</b> — 설계를 부모 · 버전으로 잇는 PostgreSQL 구조, 비슷한 설계를 찾아 참고하는 RAG.</li>
+        <li><b>웹 화면</b> — Next.js · three.js 3D 미리보기, 로봇 카메라 화면, 정지 버튼, 로봇 PC와의 MQTT 브리지.</li>
+        <li><b>YOLO seg 학습</b> — 라벨링 규칙 수립, 학습 조건 5종 비교 후 최종 모델 선정.</li>
+      </ul>
+
+      <h2><b>03</b>막혔던 문제와 해결</h2>
+      <div class="case">
+        <div><h4>상황</h4><p>겹쳐 놓인 블록을 모델이 놓치거나 둘을 하나로 인식했습니다.</p></div>
+        <div><h4>원인</h4><p>라벨링할 때 겹친 블록의 경계를 사람마다 다르게 그려 학습 데이터 기준이 흔들렸습니다.</p></div>
+        <div><h4>해결</h4><p>라벨 규칙을 하나로 정해 다시 라벨링하고, 같은 조건으로 재학습했습니다.</p></div>
+        <div><h4>결과</h4><p>mAP50 0.87 → 0.972. 시연에서 설계대로 조립 11/11.</p></div>
+      </div>
+      <figure><img src="../img/bm/yolo_cmp.png" alt="YOLO 학습 조건 비교"><figcaption>학습 조건 5종 비교 — 최종 조건으로 150 epoch 학습</figcaption></figure>
+
+      <h2><b>04</b>끝내지 못한 것</h2>
+      <p class="note">AI 설계 생성은 평균 103초가 걸려 목표인 60초 안에 들지 못했습니다. 검사를 통과한 후보만 남기고 모자란 만큼 다시 만들도록 바꾸면서 시간이 늘었고, 16일 일정에서 기능이 먼저 동작해야 한다고 판단해 생성 전체에 5분 상한을 두는 데서 멈췄습니다. 시간이 더 있었다면 꼭 필요한 규칙만 남기고 완화해 생성 시간과 설계 다양성을 시험했을 것입니다.</p>
+
+      <h2><b>05</b>배운 점</h2>
+      <ul class="list">
+        <li>모델을 바꾸기 전에 <b>데이터 기준부터 통일</b>해야 결과가 달라집니다.</li>
+        <li>통신으로 받은 데이터는 <b>지금 실행의 것인지</b>부터 확인해야 합니다. 옛 진행 상태가 남아 화면이 어긋났던 문제를 실행 ID로 걸러 해결했습니다.</li>
+      </ul>
+
+      <h2><b>06</b>사용 기술</h2>
+      <div class="tags"><span>ROS 2 Jazzy</span><span>두산 M0609 + RG2</span><span>MoveIt2</span><span>RealSense</span><span>YOLO seg</span><span>Claude API</span><span>FastAPI</span><span>Next.js · three.js</span><span>PostgreSQL</span><span>MQTT</span><span>Docker</span></div>
+    </div>
+
+    <div class="pager">
+      <span></span>
+      <a href="prewash.html"><small>다음 프로젝트</small>PreWash-Cell →</a>
+    </div>
+  </main>
+
+  <footer>© <span class="year">2026</span> Hwang Injae</footer>
+  <script src="../main.js?v=30"></script>
+</body>
+</html>
