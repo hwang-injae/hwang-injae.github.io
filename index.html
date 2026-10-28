@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="style.css?v=26">
   <script>
     // 첫 방문(세션 기준)이고 동작 줄이기 설정이 아니면 로딩 화면을 보여 줌
+    // 저장된 테마를 먼저 적용해 로딩 화면 색이 깜빡이지 않게 함
+    try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
     try { if (!sessionStorage.getItem('intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('loading'); } catch (e) {}
   </script>
 </head>
