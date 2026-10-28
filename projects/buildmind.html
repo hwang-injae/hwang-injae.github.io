@@ -6,29 +6,17 @@
   <title>BuildMind | 황인재</title>
   <meta name="description" content="AI 설계 블록 조립 협동로봇 BuildMind — PL · AI 설계 생성 · 설계 DB · 웹 화면 · YOLO seg 학습">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="stylesheet" href="../style.css?v=30">
+  <link rel="stylesheet" href="../style.css?v=24">
+  <link rel="stylesheet" href="../detail.css?v=1">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <a href="../" class="brand"><span class="mark">H</span>황인재</a>
-      <nav class="menu" aria-label="주 메뉴">
-        <a href="../#about"><b>01.</b>About</a>
-        <a href="../#journey"><b>02.</b>Journey</a>
-        <a href="../#skills"><b>03.</b>Skills</a>
-        <a href="../#projects" class="on"><b>04.</b>Projects</a>
-        <a href="../#contact"><b>05.</b>Contact</a>
-        <a href="../portfolio.pdf" target="_blank" rel="noopener" class="btn">Portfolio PDF</a>
-      </nav>
-      <div style="display:flex;gap:.5rem;align-items:center">
-        <button class="theme" id="theme" aria-label="다크 / 라이트 모드"></button>
-        <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
-      </div>
-    </div>
-  </header>
+  <div class="d-top"><div class="d-top-in">
+    <a href="../" class="d-brand"><span>H</span>황인재</a>
+    <div class="d-top-r"><a href="../#work" class="d-link">Projects</a><a href="../portfolio.pdf" target="_blank" rel="noopener" class="d-link">Portfolio PDF</a><button class="d-theme" id="theme-toggle" aria-label="다크 / 라이트 모드"></button></div>
+  </div></div>
 
   <main class="detail">
-    <a href="../#projects" class="back">← 프로젝트 목록</a>
+    <a href="../#work" class="back">← 프로젝트 목록</a>
     <p class="kind">Project 1 · 협동로봇 실기</p>
     <h1>BuildMind</h1>
     <p class="sub">말로 설계하고, 로봇이 조립한다 — AI 설계 블록 조립 협동로봇</p>
@@ -83,7 +71,7 @@
     </div>
   </main>
 
-  <footer>© <span class="year">2026</span> Hwang Injae</footer>
-  <script src="../main.js?v=30"></script>
+  <footer class="d-foot">© <span class="year">2026</span> Hwang Injae</footer>
+  <script src="../detail.js?v=1"></script>
 </body>
 </html>

@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>황인재 | 로봇 SW 개발자</title>
-  <meta name="description" content="로봇 SW 개발자 황인재의 포트폴리오 — 협동로봇 · AMR · Vision 프로젝트">
+  <meta name="description" content="로봇 SW 개발자 황인재의 포트폴리오 — 협동로봇 · AMR · Vision 프로젝트 4건">
   <meta property="og:title" content="황인재 | 로봇 SW 개발자">
-  <meta property="og:description" content="로봇 SW 개발자 황인재의 포트폴리오 — 협동로봇 · AMR · Vision 프로젝트">
+  <meta property="og:description" content="로봇 SW 개발자 황인재의 포트폴리오 — 협동로봇 · AMR · Vision 프로젝트 4건">
   <meta property="og:url" content="https://hwang-injae.github.io/">
   <link rel="canonical" href="https://hwang-injae.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://hwang-injae.github.io/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=30">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -24,170 +27,264 @@
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
     <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5z" opacity=".35"/><path d="M14 2v6h6l-6-6z"/><text x="12" y="18" text-anchor="middle" font-size="7.2" font-weight="700" font-family="IBM Plex Mono, monospace" fill="currentColor">PDF</text></symbol>
   </svg>
+  <div class="nav-toggle" id="nav-toggle"><i class="uil uil-bars"></i></div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="다크 / 라이트 모드"><i class="uil uil-sun"></i></button>
 
-  <header class="top">
-    <div class="wrap">
-      <a href="#" class="brand"><span class="mark">H</span>황인재</a>
-      <nav class="menu" aria-label="주 메뉴">
-        <a href="#about"><b>01.</b>About</a>
-        <a href="#journey"><b>02.</b>Journey</a>
-        <a href="#skills"><b>03.</b>Skills</a>
-        <a href="#projects"><b>04.</b>Projects</a>
-        <a href="#contact"><b>05.</b>Contact</a>
-        <a href="portfolio.pdf" target="_blank" rel="noopener" class="btn">Portfolio PDF</a>
-      </nav>
-      <div style="display:flex;gap:.5rem;align-items:center">
-        <button class="theme" id="theme" aria-label="다크 / 라이트 모드"></button>
-        <button class="burger" id="burger" aria-label="메뉴 열기">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav">
+      <div class="nav-logo"><a href="#home" class="nav-logo-text">H</a></div>
+      <div class="nav-menu"><div class="menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#work" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div></div>
+      <div class="btn-share">
+        <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" aria-label="GitHub"><i class="uil uil-github-alt"></i></a>
+        <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="uil uil-linkedin"></i></a>
+        <a href="mailto:il1282113@gmail.com" aria-label="Gmail"><i class="uil uil-envelope"></i></a>
+      </div>
+      <div class="nav-close" id="nav-close"><i class="uil uil-times"></i></div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <!-- ===== Home ===== -->
+    <section class="home" id="home">
+      <div class="home-container container grid">
+        <div class="home-data">
+          <p class="home-greeting">안녕하세요,</p>
+          <h1 class="home-title">로봇 SW 개발자<br>황인재입니다</h1>
+          <div class="icon-row home-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
+          </div>
+        </div>
+        <div class="home-img-wrap"><img src="img/me/photo.jpg" alt="황인재" class="home-img"></div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="about section" id="about">
+      <h2 class="section-title container" data-num="01">About me</h2>
+      <div class="about-container container grid">
+        <div class="about-photos">
+          <img src="img/bm/hi_portrait.jpg" alt="ROKEY 교육장에서 M0609가 블록을 집어 올리는 장면" class="about-photo main">
+          <img src="img/pw/portrait.jpg" alt="PreWash-Cell에서 M0609가 다회용 그릇 안쪽을 닦는 장면" class="about-photo sub">
+          <span class="about-note">ROKEY 9기 교육장에서, 2026</span>
+        </div>
+        <div class="about-data">
+          <h3 class="about-heading">도전은 많이 했지만,<br>로봇 SW는 달랐습니다</h3>
+          <p class="about-description">두산로보틱스 ROKEY 부트캠프에서 협동로봇(M0609 · P3020)과 AMR(TurtleBot4)로 Project 4건을 하며, Vision · AI가 판단한 결과대로 로봇이 움직이도록 Vision과 로봇을 연동했고, Project 초기 설계와 전체 기능 통합을 맡아 왔습니다.</p>
+          <p class="about-description">화학을 전공했고 편입 · 전과 · 창업동아리까지 여러 길을 거쳤지만, AI를 로봇에 접목하는 일에서 처음으로 더 깊이 파고들고 싶다는 마음이 들었습니다. 배울수록 재미있어 매일 새벽같이 교육장에 나갔고, 계획한 기능이 실제 로봇에서 처음 움직이던 순간의 성취감과 벽을 넘어설 때의 짜릿함으로 여기까지 왔습니다.</p>
+          <p class="about-description">기술은 빠르게 바뀝니다. 많이 아는 것 못지않게 새로 배운 기술을 우리 상황에 맞게 빠르게 적용하는 힘이 중요하다고 생각하고, 네 번의 Project에서 그것이 제 강점임을 확인했습니다. 문제가 생기면 코드 밖까지 원인을 하나씩 지워 나가고, 결과는 실제 동작으로 확인한 뒤에 반영합니다. 배운 것을 바로 써 보고 막히면 끝까지 원인을 찾는 이 자세로, 현장에서 실제로 움직이는 로봇 SW를 만들어 가겠습니다.</p>
+          <p class="about-facts">Project 4건 · PL 1회 · PM 2회 · ROKEY 9기 6개월 수료 &nbsp;·&nbsp; <a href="#contact" class="text-link">연락하기 →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Timeline ===== -->
+    <section class="qualification section">
+      <h2 class="section-title container" data-num="02">My Journey</h2>
+      <div class="qualification-container container grid">
+        <div>
+          <h3 class="qualification-title"><i class="uil uil-graduation-cap"></i>Education</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">국립부경대학교 화학과</h3><p class="timeline-text">졸업 예정</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2017.03 – 2027.02</span></div>
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">두산로보틱스 ROKEY 부트캠프 9기</h3><p class="timeline-text">AI 로보틱스 엔지니어 양성과정 수료</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2026.04 – 2026.10</span></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="qualification-title"><i class="uil uil-robot"></i>Projects</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">SortTwin</h3><p class="timeline-text">P3020 Pick &amp; Place · Vision 연동</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2026.08</span></div>
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">IDC Patrol</h3><p class="timeline-text">데이터 · 라벨링 기준 → PM</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2026.09</span></div>
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">PreWash-Cell</h3><p class="timeline-text">PM · 인터페이스 · 운영 화면 · 셀 통합</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2026.09</span></div>
+            <div class="timeline-item"><div class="circle-dot"></div><h3 class="timeline-title">BuildMind</h3><p class="timeline-text">PL · AI 설계 · 웹 · YOLO</p><span class="timeline-date"><i class="uil uil-calendar-alt"></i>2026.10</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="skills section" id="skills">
+      <h2 class="section-title container" data-num="03">Skills</h2>
+      <div class="skills-container container grid">
+        <div class="skills-tabs">
+          <div class="skills-header skills-active" data-target="#sk-robot"><div><h1 class="skills-title">로봇 제어 · 통합</h1><span class="skills-subtitle">ROS 2 · 협동로봇 · AMR</span></div><i class="uil uil-angle-down skills-arrow"></i></div>
+          <div class="skills-header" data-target="#sk-vision"><div><h1 class="skills-title">Vision · AI</h1><span class="skills-subtitle">YOLO · RGB-D · LLM</span></div><i class="uil uil-angle-down skills-arrow"></i></div>
+          <div class="skills-header" data-target="#sk-web"><div><h1 class="skills-title">Web · Data</h1><span class="skills-subtitle">FastAPI · Next.js · DB</span></div><i class="uil uil-angle-down skills-arrow"></i></div>
+          <div class="skills-header" data-target="#sk-tools"><div><h1 class="skills-title">Tools</h1><span class="skills-subtitle">Python · Git · Test</span></div><i class="uil uil-angle-down skills-arrow"></i></div>
+        </div>
+        <div class="skills-content">
+          <div class="skills-group skills-active" data-content id="sk-robot">
+            <div class="skills-list grid">
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg" alt=""><h3 class="skills-name">ROS 2 Jazzy</h3><span class="skills-where">노드 · 액션 · 토픽 규약</span></div>
+              <div class="skills-data"><span class="sk-logo sk-wide"><img class="sk-doosan" src="img/logo/doosan.svg" alt="Doosan"></span><h3 class="skills-name">두산 M0609 · P3020</h3><span class="skills-where">DRL → ROS 2 · 힘 제어 · Pick &amp; Place</span></div>
+              <div class="skills-data"><span class="sk-logo sk-draw"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="2"/><path d="M12 6V3M9 3h6M4 16h2M18 16h2"/></svg></span><h3 class="skills-name">TurtleBot4 · Nav2</h3><span class="skills-where">SLAM 지도 작성 · 탐색 · 추적 주행</span></div>
+              <div class="skills-data"><span class="sk-logo"><img src="img/logo/nvidia_brand.svg" alt="NVIDIA"></span><h3 class="skills-name">Isaac Sim 5.1 · Lula IK</h3><span class="skills-where">Digital Twin Pick &amp; Place</span></div>
+              <div class="skills-data"><span class="sk-logo sk-pair"><img class="only-dark" src="img/logo/mqtt_dark.svg" alt=""><img class="only-light" src="img/logo/mqtt_light.svg" alt=""></span><h3 class="skills-name">MQTT</h3><span class="skills-where">로봇 PC – 웹 PC 브리지</span></div>
+            </div>
+          </div>
+          <div class="skills-group" data-content id="sk-vision">
+            <div class="skills-list grid">
+              <div class="skills-data"><span class="sk-logo sk-pair"><img class="only-dark" src="img/logo/ultralytics_dark.svg" alt=""><img class="only-light" src="img/logo/ultralytics_light.svg" alt=""></span><h3 class="skills-name">YOLO (Ultralytics)</h3><span class="skills-where">학습 · 라벨링 기준 수립</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt=""><h3 class="skills-name">OpenCV</h3><span class="skills-where">픽셀 + 깊이 → 3D 좌표</span></div>
+              <div class="skills-data"><span class="sk-logo"><img src="img/logo/intel_brand.svg" alt="Intel"></span><h3 class="skills-name">Intel RealSense</h3><span class="skills-where">깊이 카메라 연동</span></div>
+              <div class="skills-data"><span class="sk-logo sk-draw"><svg viewBox="0 0 24 24"><path d="M4 5h13a2 2 0 012 2v7a2 2 0 01-2 2H9l-5 4V7a2 2 0 012-2z"/><path d="M20 2l.6 1.6L22 4l-1.4.6L20 6l-.6-1.4L18 4l1.4-.4z"/></svg></span><h3 class="skills-name">LLM · RAG</h3><span class="skills-where">구조화 출력 · AI 설계 생성</span></div>
+              <div class="skills-data"><span class="sk-logo sk-draw"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" class="fill"/></svg></span><h3 class="skills-name">rosbag</h3><span class="skills-where">녹화 데이터로 선검증</span></div>
+            </div>
+          </div>
+          <div class="skills-group" data-content id="sk-web">
+            <div class="skills-list grid">
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt=""><h3 class="skills-name">FastAPI</h3><span class="skills-where">운영 화면 백엔드</span></div>
+              <div class="skills-data"><img class="sk-logo sk-invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt=""><h3 class="skills-name">Next.js</h3><span class="skills-where">운영 화면 · 관제</span></div>
+              <div class="skills-data"><img class="sk-logo sk-invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" alt=""><h3 class="skills-name">three.js</h3><span class="skills-where">설계 3D 미리보기</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt=""><h3 class="skills-name">PostgreSQL</h3><span class="skills-where">설계 버전 관리 DB</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt=""><h3 class="skills-name">SQLite</h3><span class="skills-where">용기별 처리 기록</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt=""><h3 class="skills-name">Docker</h3><span class="skills-where">웹 · 브리지 구성</span></div>
+            </div>
+          </div>
+          <div class="skills-group" data-content id="sk-tools">
+            <div class="skills-list grid">
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt=""><h3 class="skills-name">Python</h3><span class="skills-where">주 언어 · C++ 학습 예정</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt=""><h3 class="skills-name">Git · PR 관리</h3><span class="skills-where">결정 기록 · 기능 동결</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg" alt=""><h3 class="skills-name">pytest · Mock</h3><span class="skills-where">로봇 없이 자동 시험</span></div>
+              <div class="skills-data"><img class="sk-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" alt=""><h3 class="skills-name">Ubuntu · Linux</h3><span class="skills-where">로봇 PC · 개발 환경</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="work section" id="work">
+      <h2 class="section-title container" data-num="04">Projects</h2>
+      <div class="work-filters">
+        <span class="work-item active-work" data-filter="all">All</span>
+        <span class="work-item" data-filter=".cobot">협동로봇</span>
+        <span class="work-item" data-filter=".sim">Digital Twin</span>
+      </div>
+      <div class="work-container container grid">
+        <div class="work-card mix cobot" data-category="협동로봇 실기 · PL">
+          <div class="work-img-wrap"><img src="img/bm/cover.jpg" alt="BuildMind" class="work-img"></div>
+          <div class="work-tag">협동로봇 · 2026.10 · 16일 · 5인</div>
+          <h3 class="work-title">BuildMind</h3>
+          <p class="work-desc">말로 요청한 블록 설계를 AI가 만들고, M0609가 흩어진 블록을 찾아 조립합니다.</p>
+          <p class="work-role">담당 · PL · 웹 화면 · AI 설계 생성 · YOLO seg 학습</p>
+          <div class="work-nums"><div><b>11/11</b><span>설계대로 조립</span></div><div><b>98%</b><span>블록 집기</span></div><div><b>0.972</b><span>mAP50</span></div></div>
+          <div class="portfolio-item-details">
+            <h3 class="details-title">BuildMind — AI 설계 블록 조립 협동로봇</h3>
+            <p class="details-description">말이나 글로 요청하면 AI가 블록 설계도를 만들고, 협동로봇이 흩어진 블록을 찾아 조립합니다.</p>
+            <div class="details-nums"><div><b>11/11</b><span>설계대로 조립</span></div><div><b>98%</b><span>블록 집기</span></div><div><b>0.972</b><span>mAP50</span></div></div>
+            <div class="details-label">담당 역할 · PL</div>
+            <ul class="details-list"><li>AI 설계 생성 — 정해진 형식으로만 받아 형식 오류 0건</li><li>설계 DB — 부모–자식 버전 관리(PLM) · RAG</li><li>웹 화면 — 3D 미리보기 · 로봇 카메라 · 정지 버튼</li><li>YOLO 학습 — 사진 208장 · 모델 5종 비교</li></ul>
+            <div class="details-label">문제 해결</div>
+            <ul class="details-list"><li>겹친 블록을 놓침 → 라벨 규칙 통일 · 재학습 → mAP50 0.87 → 0.972</li></ul>
+            <div class="chips small"><span>ROS 2</span><span>M0609 + RG2</span><span>RealSense</span><span>YOLO seg</span><span>Claude</span><span>FastAPI · Next.js</span><span>PostgreSQL</span><span>MQTT</span></div>
+            <div class="details-buttons"><a href="https://github.com/hwang-injae/buildmind" target="_blank" rel="noopener" class="button"><i class="uil uil-github-alt"></i> GitHub</a><a href="#" target="_blank" rel="noopener" class="button button-ghost notion-link" data-notion="buildmind"><i class="uil uil-book-open"></i> Notion</a><a href="https://raw.githubusercontent.com/hwang-injae/buildmind/main/docs/images/demo/%EB%8D%B0%EB%AA%A8_AI%EC%84%A4%EA%B3%84%EC%83%9D%EC%84%B1_v1_101715.gif" target="_blank" rel="noopener" class="button button-ghost"><i class="uil uil-play-circle"></i> 시연 영상</a></div>
+          </div>
+        </div>
+
+        <div class="work-card mix sim" data-category="Isaac Sim 시뮬레이션 · Pick &amp; Place">
+          <div class="work-img-wrap"><img src="img/dt/hero.jpg" alt="SortTwin" class="work-img"></div>
+          <div class="work-tag">Digital Twin · 2026.08 · 2주 · 4인</div>
+          <h3 class="work-title">SortTwin</h3>
+          <p class="work-desc">Isaac Sim에서 AMR이 가져온 박스를 P3020이 카메라로 찾아 집고, 컨베이어로 분류합니다.</p>
+          <p class="work-role">담당 · P3020 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동</p>
+          <div class="work-nums"><div><b>1미션</b><span>입고 → 분류 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
+          <div class="portfolio-item-details">
+            <h3 class="details-title">SortTwin — AMR × 협동로봇 택배 분류 Digital Twin</h3>
+            <p class="details-description">입고 AMR이 가져온 박스를 P3020이 카메라로 찾아 컨베이어에 올리고 분류하는 공정을 Isaac Sim에 구현했습니다.</p>
+            <div class="details-nums"><div><b>1미션</b><span>입고 → 분류 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
+            <div class="details-label">담당 역할 · P3020 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동</div>
+            <ul class="details-list"><li>P3020 입고 Pick &amp; Place · 출고 첫 버전 — Lula IK · 로봇 위치는 USD에서 읽어 자동 반영</li><li>픽셀 + 깊이 → 3D 좌표, 거리 · 색 · 높이 필터로 오검출 제거</li><li>화물이 빌 때까지 반복, 5초 미검출이면 AMR 복귀</li><li>ROS 2 Action 서버 · 단계별 진행률 피드백</li></ul>
+            <div class="details-label">문제 해결</div>
+            <ul class="details-list"><li>Isaac Sim(Python 3.11) ↔ ROS 2(Python 3.12) 타입 불일치 → 액션 서버 프로세스 분리 · 표준 타입 토픽 2개</li></ul>
+            <div class="chips small"><span>Isaac Sim 5.1</span><span>ROS 2 Jazzy</span><span>Lula IK</span><span>ROS 2 Action</span><span>RGB-D</span><span>Python</span></div>
+            <div class="details-buttons"><a href="https://github.com/hwang-injae/amr-cobot-sorting" target="_blank" rel="noopener" class="button"><i class="uil uil-github-alt"></i> GitHub</a><a href="#" target="_blank" rel="noopener" class="button button-ghost notion-link" data-notion="sorttwin"><i class="uil uil-book-open"></i> Notion</a><a href="https://raw.githubusercontent.com/hwang-injae/amr-cobot-sorting/main/docs/screenshots/top-view-x5.gif" target="_blank" rel="noopener" class="button button-ghost"><i class="uil uil-play-circle"></i> 시연 영상</a></div>
+          </div>
+        </div>
+
+        <div class="work-card mix cobot" data-category="협동로봇 실기 · PM">
+          <div class="work-img-wrap"><img src="img/pw/hero.jpg" alt="PreWash-Cell" class="work-img"></div>
+          <div class="work-tag">협동로봇 · 2026.09 · 13일 · 4인</div>
+          <h3 class="work-title">PreWash-Cell</h3>
+          <p class="work-desc">협동로봇 1대가 다회용기를 카메라 없이 집고 닦아 세척기 팔레트에 꽂습니다.</p>
+          <p class="work-role">담당 · PM · 운영 화면(HMI) · 기록 DB · 셀 통합</p>
+          <div class="work-nums"><div><b>약 13분</b><span>무정지 완주</span></div><div><b>7/7</b><span>수락 기준</span></div><div><b>7종</b><span>예외 복구</span></div></div>
+          <div class="portfolio-item-details">
+            <h3 class="details-title">PreWash-Cell — 다회용기 예비세척 자동화 셀</h3>
+            <p class="details-description">협동로봇 1대가 집기 → 잔반 판정 → 닦기 → 헹굼 → 적재까지 버튼 한 번으로 처리합니다. 카메라 없이 파지 폭 · 무게 · 힘으로 판단합니다.</p>
+            <div class="details-nums"><div><b>약 13분</b><span>무정지 완주</span></div><div><b>7/7</b><span>수락 기준</span></div><div><b>7종</b><span>예외 복구</span></div></div>
+            <div class="details-label">담당 역할 · PM</div>
+            <ul class="details-list"><li>함수 계약 · 메시지 먼저 고정 → 4명이 로봇 없이 병렬 개발</li><li>운영 화면 · 용기별 기록 DB — 버튼 응답 7~96 ms</li><li>무게 측정 오차 원인(케이블 장력) 규명 → 잔반 4/4 감지</li><li>9/22부터 셀 통합 총괄 → 배속 1.0 무정지 완주</li></ul>
+            <div class="details-label">문제 해결</div>
+            <ul class="details-list"><li>콜백 안 로봇 명령이 두 번째부터 멈춤 → 로봇 명령을 메인 스레드 한 곳으로 → 연속 6회 성공</li></ul>
+            <div class="chips small"><span>ROS 2</span><span>M0609 + RG2</span><span>힘 제어</span><span>FastAPI · Next.js</span><span>SQLite</span><span>Fast DDS</span></div>
+            <div class="details-buttons"><a href="https://github.com/hwang-injae/prewash-cell" target="_blank" rel="noopener" class="button"><i class="uil uil-github-alt"></i> GitHub</a><a href="#" target="_blank" rel="noopener" class="button button-ghost notion-link" data-notion="prewash"><i class="uil uil-book-open"></i> Notion</a><a href="https://raw.githubusercontent.com/hwang-injae/prewash-cell/main/docs/images/demo/demo_cup_wipe.gif" target="_blank" rel="noopener" class="button button-ghost"><i class="uil uil-play-circle"></i> 시연 영상</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="portfolio-popup">
+      <div class="portfolio-popup-inner">
+        <div class="portfolio-popup-content grid">
+          <span class="portfolio-popup-close"><i class="uil uil-times"></i></span>
+          <div class="pp-nav"><button class="pp-prev" aria-label="이전 Project">←</button><span class="pp-count">1 / 3</span><button class="pp-next" aria-label="다음 Project">→</button></div>
+          <div class="pp-thumbnail"><img src="" alt="" class="portfolio-popup-img"></div>
+          <div class="portfolio-popup-info">
+            <div class="portfolio-popup-subtitle">Project · <span></span></div>
+            <div class="portfolio-popup-body"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
 
-  <main>
-    <!-- ===== 첫 화면 ===== -->
-    <section class="wrap hero" id="home">
-      <div>
-        <p class="eyebrow">안녕하세요, 저는</p>
-        <h1>황인재입니다.<span>인식 결과를 실제 로봇의<br>동작으로 잇습니다.</span></h1>
-        <p class="lead">두산로보틱스 ROKEY 9기에서 협동로봇(M0609 · P3020)과 AMR(TurtleBot4)로 팀 프로젝트를 하며, Vision · AI가 판단한 결과대로 로봇이 움직이도록 연동하고 초기 설계와 전체 통합을 맡았습니다.</p>
-        <div class="cta">
-          <a href="#projects" class="btn solid">프로젝트 보기</a>
-          <a href="#contact" class="btn">연락하기</a>
-        </div>
-      </div>
-      <div class="hero-photo"><img src="img/me/photo.jpg" alt="황인재"></div>
-    </section>
-
-    <!-- ===== 01 About ===== -->
-    <section class="sec" id="about">
-      <div class="wrap">
-        <div class="sec-head reveal"><b>01.</b><h2>About me</h2></div>
-        <div class="about">
-          <div class="reveal">
-            <p>화학을 전공했고 편입 · 전과 · 창업동아리까지 여러 길을 거쳤지만, <strong>AI를 로봇에 접목하는 일</strong>에서 처음으로 더 깊이 파고들고 싶다는 마음이 들었습니다. 배울수록 재미있어 매일 새벽같이 교육장에 나갔고, 계획한 기능이 실제 로봇에서 처음 움직이던 순간의 성취감으로 여기까지 왔습니다.</p>
-            <p>기술은 빠르게 바뀝니다. 많이 아는 것 못지않게 <strong>새로 배운 기술을 우리 상황에 맞게 빠르게 적용하는 힘</strong>이 중요하다고 생각하고, 네 번의 프로젝트에서 그것이 제 강점임을 확인했습니다.</p>
-            <p>문제가 생기면 코드 밖까지 원인을 하나씩 지워 나가고, 결과는 실제 동작으로 확인한 뒤에 반영합니다. 이 자세로 현장에서 실제로 움직이는 로봇 SW를 만들어 가겠습니다.</p>
-            <div class="facts"><span>프로젝트 4건</span><span>PL 1회 · PM 2회</span><span>ROKEY 9기 6개월 수료</span><span>부경대 화학과</span></div>
+    <!-- ===== Contact ===== -->
+    <section class="contact section" id="contact">
+      <h2 class="section-title container" data-num="05">Contact</h2>
+      <div class="contact-line container">
+        <p class="contact-text">로봇 SW 개발 신입으로 함께할 팀을 찾고 있습니다. 메일 주시면 바로 답장드리겠습니다.</p>
+        <div class="icon-row contact-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
           </div>
-          <div class="photos reveal">
-            <img class="p1" src="img/bm/hi_portrait.jpg" alt="ROKEY 교육장에서 M0609가 블록을 집어 올리는 장면">
-            <img class="p2" src="img/pw/portrait.jpg" alt="PreWash-Cell에서 M0609가 다회용 그릇 안쪽을 닦는 장면">
-            <span class="cap">ROKEY 9기 교육장, 2026</span>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ===== 02 Journey ===== -->
-    <section class="sec" id="journey">
-      <div class="wrap">
-        <div class="sec-head reveal"><b>02.</b><h2>My Journey</h2></div>
-        <div class="journey">
-          <div class="reveal">
-            <h3>Education</h3>
-            <ul class="tl">
-              <li><b>두산로보틱스 ROKEY 부트캠프 9기</b><span>AI 로보틱스 엔지니어 양성과정 수료</span><i>2026.04 – 2026.10</i></li>
-              <li><b>국립부경대학교 화학과</b><span>졸업 예정</span><i>2017.03 – 2027.02</i></li>
-            </ul>
-          </div>
-          <div class="reveal">
-            <h3>Projects</h3>
-            <ul class="tl">
-              <li><b>BuildMind</b><span>PL · AI 설계 · 웹 · YOLO</span><i>2026.10</i></li>
-              <li><b>PreWash-Cell</b><span>PM · 인터페이스 · 운영 화면 · 셀 통합</span><i>2026.09</i></li>
-              <li><b>IDC Patrol</b><span>데이터 · 라벨링 기준 → PM</span><i>2026.09</i></li>
-              <li><b>SortTwin</b><span>P3020 Pick &amp; Place · Vision 연동</span><i>2026.08</i></li>
-            </ul>
+    <footer class="footer">
+      <div class="footer-bg">
+        <div class="footer-container container grid">
+          <div><h1 class="footer-title">황인재</h1><span class="footer-subtitle">로봇 SW 개발자</span></div>
+          <ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#work">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+          <div class="icon-row footer-icons">
+            <a href="mailto:il1282113@gmail.com" class="icon-btn" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
+            <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="github.com/hwang-injae" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" class="icon-btn" title="linkedin.com/in/hwang-injae" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="portfolio.pdf" target="_blank" rel="noopener" class="icon-btn" title="Portfolio PDF" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
           </div>
         </div>
+        <p class="footer-copy">© 2026 Hwang Injae</p>
       </div>
-    </section>
-
-    <!-- ===== 03 Skills ===== -->
-    <section class="sec" id="skills">
-      <div class="wrap">
-        <div class="sec-head reveal"><b>03.</b><h2>Skills</h2></div>
-        <div class="skills">
-          <div class="skill reveal"><h3>로봇 제어 · 통합</h3><span class="sub">ROS 2 · 협동로봇 · AMR</span>
-            <ul><li>ROS 2 Jazzy<span>노드 · 액션 · 토픽 규약</span></li><li>두산 M0609 · P3020<span>DRL → ROS 2 · 힘 제어 · Pick &amp; Place</span></li><li>TurtleBot4 · Nav2<span>SLAM 지도 작성 · 탐색 · 추적 주행</span></li><li>Isaac Sim 5.1 · Lula IK<span>Digital Twin Pick &amp; Place</span></li><li>MQTT<span>로봇 PC – 웹 PC 브리지</span></li></ul></div>
-          <div class="skill reveal"><h3>Vision · AI</h3><span class="sub">YOLO · RGB-D · LLM</span>
-            <ul><li>YOLO (Ultralytics)<span>학습 · 라벨링 기준 수립</span></li><li>OpenCV<span>픽셀 + 깊이 → 3D 좌표</span></li><li>Intel RealSense<span>깊이 카메라 연동</span></li><li>LLM · RAG<span>구조화 출력 · AI 설계 생성</span></li><li>rosbag<span>녹화 데이터로 선검증</span></li></ul></div>
-          <div class="skill reveal"><h3>Web · Data</h3><span class="sub">FastAPI · Next.js · DB</span>
-            <ul><li>FastAPI<span>운영 화면 백엔드</span></li><li>Next.js · three.js<span>운영 화면 · 3D 미리보기</span></li><li>PostgreSQL · SQLite<span>설계 버전 관리 · 처리 기록</span></li><li>Docker<span>웹 · 브리지 구성</span></li></ul></div>
-          <div class="skill reveal"><h3>Tools</h3><span class="sub">Python · Git · Test</span>
-            <ul><li>Python<span>주 언어 · C++ 학습 예정</span></li><li>Git · PR 관리<span>결정 기록 · 기능 동결</span></li><li>pytest · Mock<span>로봇 없이 자동 시험</span></li><li>Ubuntu · Linux<span>로봇 PC · 개발 환경</span></li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 04 Projects ===== -->
-    <section class="sec" id="projects">
-      <div class="wrap">
-        <div class="sec-head reveal"><b>04.</b><h2>Projects</h2></div>
-
-        <article class="feat reveal">
-          <a class="shot" href="projects/buildmind.html"><img src="img/bm/cover.jpg" alt="BuildMind"></a>
-          <div class="panel">
-            <p class="kind">협동로봇 · 2026.10 · 16일 · 5인 · PL</p>
-            <h3><a href="projects/buildmind.html">BuildMind</a></h3>
-            <p class="desc">말로 요청한 블록 설계를 AI가 만들고, M0609가 흩어진 블록을 찾아 조립합니다. AI 설계 생성 · 설계 DB · 웹 화면 · YOLO seg 학습을 맡았습니다.</p>
-            <div class="nums"><div><b>11/11</b><span>설계대로 조립</span></div><div><b>98%</b><span>블록 집기</span></div><div><b>0.972</b><span>mAP50</span></div></div>
-            <div class="tags"><span>ROS 2</span><span>M0609 + RG2</span><span>YOLO seg</span><span>Claude</span><span>Next.js</span><span>PostgreSQL</span></div>
-            <div class="links"><a href="projects/buildmind.html" class="more">자세히 보기</a></div>
-          </div>
-        </article>
-
-        <article class="feat alt reveal">
-          <a class="shot" href="projects/prewash.html"><img src="img/pw/hero.jpg" alt="PreWash-Cell"></a>
-          <div class="panel">
-            <p class="kind">협동로봇 · 2026.09 · 13일 · 4인 · PM</p>
-            <h3><a href="projects/prewash.html">PreWash-Cell</a></h3>
-            <p class="desc">협동로봇 1대가 다회용기를 카메라 없이 집고 닦아 세척기 팔레트에 꽂습니다. 함수 계약 · 운영 화면 · 기록 DB · 셀 통합을 맡았습니다.</p>
-            <div class="nums"><div><b>약 13분</b><span>무정지 완주</span></div><div><b>7/7</b><span>수락 기준</span></div><div><b>7종</b><span>예외 복구</span></div></div>
-            <div class="tags"><span>ROS 2</span><span>M0609 + RG2</span><span>힘 제어</span><span>FastAPI</span><span>SQLite</span></div>
-            <div class="links"><a href="projects/prewash.html" class="more">자세히 보기</a></div>
-          </div>
-        </article>
-
-        <article class="feat reveal">
-          <a class="shot" href="projects/sorttwin.html"><img src="img/dt/hero.jpg" alt="SortTwin"></a>
-          <div class="panel">
-            <p class="kind">Digital Twin · 2026.08 · 2주 · 4인</p>
-            <h3><a href="projects/sorttwin.html">SortTwin</a></h3>
-            <p class="desc">Isaac Sim에서 AMR이 가져온 박스를 P3020이 카메라로 찾아 집고 컨베이어로 분류합니다. 입고 Pick &amp; Place · 출고 첫 버전 · Vision 연동을 맡았습니다.</p>
-            <div class="nums"><div><b>1미션</b><span>입고 → 분류 연결</span></div><div><b>8단계</b><span>Pick &amp; Place</span></div><div><b>3단</b><span>오검출 필터</span></div></div>
-            <div class="tags"><span>Isaac Sim 5.1</span><span>ROS 2 Jazzy</span><span>Lula IK</span><span>RGB-D</span></div>
-            <div class="links"><a href="projects/sorttwin.html" class="more">자세히 보기</a></div>
-          </div>
-        </article>
-
-        <p class="others-head reveal">그 밖의 프로젝트</p>
-        <div class="others">
-          <a class="oth reveal" href="https://github.com/hwang-injae/idc-patrol-robot" target="_blank" rel="noopener"><span class="kind">AMR · 2026.09 · 6일 · 8인 · PM</span><h4>IDC Patrol</h4><p>TurtleBot4 2대가 데이터센터 랙을 순찰하며 열린 도어를 YOLO로 판별합니다. 데이터 · 라벨링 기준을 맡다 PM을 겸했고, 전체 통합 시연은 다음 단계 과제로 남겼습니다.</p><div class="tags"><span>TurtleBot4</span><span>Nav2</span><span>YOLO</span></div></a>
-          <a class="oth reveal" href="https://github.com/hwang-injae/gesture-controlled-robot-tracking" target="_blank" rel="noopener"><span class="kind">학습 프로젝트 · 2026.07 · 5인</span><h4>손 제스처 제어 물체 추적 로봇</h4><p>손 제스처로 모드를 바꾸고 카메라로 찾은 물체를 따라가는 로봇을 만들었습니다.</p><div class="tags"><span>OpenCV</span><span>MediaPipe</span><span>ROS 2</span></div></a>
-          <a class="oth reveal" href="https://github.com/hwang-injae/rokey-mini-projects" target="_blank" rel="noopener"><span class="kind">미니 프로젝트 3건</span><h4>M0609 기어 · RC카 탐색 · 색 분류</h4><p>DRL → ROS 2 변환, TurtleBot4로 지도를 만들고 RC카를 찾아 추적, Isaac Sim 색 분류 노드.</p><div class="tags"><span>DRL</span><span>SLAM</span><span>Isaac Sim</span></div></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 05 Contact ===== -->
-    <section class="sec" id="contact">
-      <div class="wrap contact reveal">
-        <p class="eyebrow">05. Contact</p>
-        <h2>함께할 팀을 찾고 있습니다</h2>
-        <p>로봇 SW 개발 신입으로 함께할 팀을 찾고 있습니다. 메일 주시면 바로 답장드리겠습니다.</p>
-        <a href="mailto:il1282113@gmail.com" class="btn solid">메일 보내기</a>
-        <div class="icons">
-          <a href="mailto:il1282113@gmail.com" title="il1282113@gmail.com" aria-label="Gmail"><svg><use href="#i-gmail"/></svg></a>
-          <a href="https://github.com/hwang-injae" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
-          <a href="https://linkedin.com/in/hwang-injae" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
-          <a href="portfolio.pdf" target="_blank" rel="noopener" aria-label="Portfolio PDF"><svg><use href="#i-pdf"/></svg></a>
-        </div>
-      </div>
-    </section>
+    </footer>
   </main>
 
-  <footer>© <span class="year">2026</span> Hwang Injae · 직접 만든 사이트입니다</footer>
-  <script src="main.js?v=30"></script>
+  <div class="curzr-arrow-pointer" hidden aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path class="inner" d="M25,30a5.82,5.82,0,0,1-1.09-.17l-.2-.07-7.36-3.48a.72.72,0,0,0-.35-.08.78.78,0,0,0-.33.07L8.24,29.54a.66.66,0,0,1-.2.06,5.17,5.17,0,0,1-1,.15,3.6,3.6,0,0,1-3.29-5L12.68,4.2a3.59,3.59,0,0,1,6.58,0l9,20.74A3.6,3.6,0,0,1,25,30Z" />
+      <path class="outer" d="M16,3A2.59,2.59,0,0,1,18.34,4.6l9,20.74A2.59,2.59,0,0,1,25,29a5.42,5.42,0,0,1-.86-.15l-7.37-3.48a1.84,1.84,0,0,0-.77-.17,1.69,1.69,0,0,0-.73.16l-7.4,3.31a5.89,5.89,0,0,1-.79.12,2.59,2.59,0,0,1-2.37-3.62L13.6,4.6A2.58,2.58,0,0,1,16,3m0-2h0A4.58,4.58,0,0,0,11.76,3.8L2.84,24.33A4.58,4.58,0,0,0,7,30.75a6.08,6.08,0,0,0,1.21-.17,1.87,1.87,0,0,0,.4-.13L16,27.18l7.29,3.44a1.64,1.64,0,0,0,.39.14A6.37,6.37,0,0,0,25,31a4.59,4.59,0,0,0,4.21-6.41l-9-20.75A4.62,4.62,0,0,0,16,1Z" />
+    </svg>
+  </div>
+
+  <script src="main.js?v=23"></script>
 </body>
 </html>

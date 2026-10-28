@@ -1,0 +1,52 @@
+/* ===== 프로젝트 상세 페이지 (style.css의 색·글꼴 변수를 그대로 사용) ===== */
+.d-top { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--body-color) 80%, transparent); border-bottom: 1px solid var(--box-border); }
+.d-top-in { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.d-brand { display: flex; align-items: center; gap: .6rem; font-family: var(--head-font); font-weight: 700; color: var(--title-color); }
+.d-brand span { width: 32px; height: 32px; border: 2px solid var(--skin-color); border-radius: 9px; display: grid; place-items: center; font-family: var(--mono-font); color: var(--skin-color); font-size: .9rem; }
+.d-top-r { display: flex; align-items: center; gap: 1.2rem; }
+.d-link { font-family: var(--mono-font); font-size: var(--small-font-size); color: var(--text-color); }
+.d-link:hover { color: var(--skin-color); }
+.d-theme { width: 36px; height: 36px; border: 1px solid var(--box-border); border-radius: 9px; background: var(--box-color); color: var(--text-color); cursor: pointer; display: grid; place-items: center; }
+.d-theme svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.detail { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+.detail .back { font-family: var(--mono-font); font-size: var(--small-font-size); color: var(--text-color-light); display: inline-block; margin-bottom: 1.6rem; }
+.detail .back:hover { color: var(--skin-color); }
+.detail .kind { font-family: var(--mono-font); color: var(--skin-color); font-size: var(--small-font-size); }
+.detail h1 { font-family: var(--head-font); font-size: var(--biggest-font-size); color: var(--title-color); margin: .3rem 0 .5rem; line-height: 1.2; word-break: keep-all; }
+.detail .sub { color: var(--text-color); font-size: var(--h3-font-size); margin-bottom: 1.2rem; word-break: keep-all; }
+.detail .meta { display: flex; flex-wrap: wrap; gap: .4rem 1.3rem; font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color-light); margin-bottom: 1.2rem; }
+.detail .meta b { color: var(--text-color); font-weight: 500; }
+.detail .links { display: flex; gap: .6rem; flex-wrap: wrap; }
+.detail .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.1rem; border: 1px solid var(--skin-color); border-radius: 8px; color: var(--skin-color); font-family: var(--mono-font); font-size: var(--smaller-font-size); transition: background .25s, transform .25s; }
+.detail .btn:hover { background: var(--skin-color); color: #fff; transform: translateY(-2px); }
+.detail .btn.ghost { border-color: var(--box-border); color: var(--text-color); }
+.detail .btn.ghost:hover { background: var(--box-color); color: var(--title-color); }
+.detail .hero-img { border-radius: .75rem; overflow: hidden; margin: 2rem 0; box-shadow: 0 20px 50px -24px rgba(0, 0, 0, .6); }
+.detail .hero-img img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.detail .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.detail .stats div { background: var(--box-color); border: 1px solid var(--box-border); border-radius: .75rem; padding: 1rem 1.2rem; }
+.detail .stats b { display: block; font-family: var(--mono-font); font-size: 1.5rem; color: var(--skin-color); }
+.detail .stats span { font-size: var(--small-font-size); color: var(--text-color-light); }
+.detail .doc h2 { font-family: var(--head-font); font-size: var(--h2-font-size); color: var(--title-color); margin: 2.8rem 0 1rem; display: flex; align-items: baseline; gap: .7rem; }
+.detail .doc h2 b { font-family: var(--mono-font); font-size: var(--small-font-size); color: var(--skin-color); font-weight: 500; }
+.detail .doc p { color: var(--text-color); margin-bottom: 1rem; word-break: keep-all; }
+.detail .list li { position: relative; padding-left: 1.2rem; color: var(--text-color); margin-bottom: .5rem; word-break: keep-all; }
+.detail .list li::before { content: '▸'; position: absolute; left: 0; color: var(--skin-color); }
+.detail .list b { color: var(--title-color); font-weight: 600; }
+.detail figure { margin: 1.4rem 0; }
+.detail figure img { border-radius: .75rem; border: 1px solid var(--box-border); width: 100%; }
+.detail figcaption { font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color-light); margin-top: .5rem; }
+.detail .case { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.detail .case div { background: var(--box-color); border: 1px solid var(--box-border); border-radius: .75rem; padding: 1.1rem 1.2rem; }
+.detail .case h4 { font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--skin-color); font-weight: 500; margin: 0 0 .5rem; letter-spacing: .06em; }
+.detail .case p { font-size: var(--small-font-size); margin: 0; }
+.detail .note { border-left: 3px solid var(--skin-color); padding: .7rem 1rem; background: color-mix(in srgb, var(--skin-color) 12%, transparent); border-radius: 0 .6rem .6rem 0; color: var(--text-color); }
+.detail .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.detail .tags span { font-family: var(--mono-font); font-size: var(--smaller-font-size); padding: .25rem .65rem; border: 1px solid var(--box-border); background: var(--box-color); border-radius: 999px; color: var(--text-color); }
+.detail .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid var(--box-border); }
+.detail .pager a { font-family: var(--mono-font); font-size: var(--small-font-size); color: var(--text-color); }
+.detail .pager a:hover { color: var(--skin-color); }
+.detail .pager small { display: block; font-size: .7rem; color: var(--text-color-light); }
+.d-foot { text-align: center; font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color-light); padding: 2rem 0; border-top: 1px solid var(--box-border); }
+@media (max-width: 700px) { .detail .stats, .detail .case { grid-template-columns: 1fr; } .d-link:first-child { display: none; } }
