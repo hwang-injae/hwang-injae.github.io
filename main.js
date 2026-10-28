@@ -237,3 +237,21 @@ document.querySelectorAll('.about-photo.sub').forEach(p => p.addEventListener('t
 // ===== 개발자 도구를 연 사람에게 =====
 console.log('%c황인재 · 로봇 SW 개발자', 'font: 700 16px serif; color: #3A4FB5');
 console.log('콘솔까지 열어 보셨네요. 이 사이트 코드는 https://github.com/hwang-injae/hwang-injae.github.io 에 있습니다.\n연락은 il1282113@gmail.com 으로 주세요.');
+
+// ===== 로딩 화면 종료: 페이지 로드 + 최소 1.4초 뒤 위로 걷힘 =====
+(function () {
+  const ld = document.getElementById('loader');
+  if (!ld || !document.documentElement.classList.contains('loading')) return;
+  const t0 = performance.now();
+  function finish() {
+    const wait = Math.max(0, 1400 - (performance.now() - t0));
+    setTimeout(() => {
+      ld.classList.add('done');
+      document.documentElement.classList.remove('loading');
+      try { sessionStorage.setItem('intro', '1'); } catch (e) {}
+      setTimeout(() => ld.remove(), 900);
+    }, wait);
+  }
+  if (document.readyState === 'complete') finish(); else addEventListener('load', finish);
+  setTimeout(finish, 4000); // 이미지가 늦어도 4초 뒤엔 걷힘
+})();
