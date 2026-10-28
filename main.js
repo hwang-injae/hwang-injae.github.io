@@ -60,71 +60,27 @@ tabs.forEach(tab => {
   });
 });
 
-// ===== 프로젝트 필터 (직접 구현: 숨김/표시 + 아래에서 올라오는 페이드) =====
+// ===== 프로젝트 필터 (숨김/표시 + 페이드, 보이는 카드끼리 좌우 번갈아) =====
 const linkWork = document.querySelectorAll('.work-item');
-const workCards = document.querySelectorAll('.work-card');
+const featCards = document.querySelectorAll('.feat');
+function layoutFeat() {
+  let i = 0;
+  featCards.forEach(c => { if (c.style.display !== 'none') { c.classList.toggle('alt', i % 2 === 1); i++; } });
+}
 linkWork.forEach(l => l.addEventListener('click', function () {
   linkWork.forEach(x => x.classList.remove('active-work'));
   this.classList.add('active-work');
   const f = this.dataset.filter;
   let i = 0;
-  workCards.forEach(c => {
+  featCards.forEach(c => {
     const show = f === 'all' || c.matches(f);
     c.style.display = show ? '' : 'none';
     c.classList.remove('card-in');
-    if (show) { void c.offsetWidth; c.style.animationDelay = (i++ * 60) + 'ms'; c.classList.add('card-in'); }
+    if (show) { void c.offsetWidth; c.style.animationDelay = (i++ * 80) + 'ms'; c.classList.add('card-in'); }
   });
+  layoutFeat();
 }));
-
-// ===== 프로젝트 팝업 =====
-const popup = document.querySelector('.portfolio-popup');
-document.addEventListener('click', e => {
-  const card = e.target.closest('.work-card');
-  if (card && !e.target.closest('a')) openPopup(card);
-});
-// Notion 정리 페이지 주소 (비어 있으면 버튼을 숨김)
-const NOTION_PAGES = {
-  buildmind: 'https://app.notion.com/p/401f5144f244818c97cbdf9a395181ca',
-  sorttwin: 'https://app.notion.com/p/401f5144f24481e4a4a8dcf259c55da4',
-  prewash: 'https://app.notion.com/p/401f5144f2448190b54bd0d5fa624d30'
-};
-let popupCard = null;
-function visibleCards() { return [...document.querySelectorAll('.work-card')].filter(c => c.style.display !== 'none'); }
-function openPopup(card) {
-  popupCard = card;
-  const list = visibleCards();
-  document.querySelector('.pp-count').textContent = (list.indexOf(card) + 1) + ' / ' + list.length;
-  document.querySelector('.pp-nav').style.display = list.length > 1 ? '' : 'none';
-  document.querySelector('.pp-thumbnail img').src = card.querySelector('.work-img').src;
-  document.querySelector('.portfolio-popup-subtitle span').innerHTML = card.dataset.category || '';
-  const body = document.querySelector('.portfolio-popup-body');
-  body.innerHTML = card.querySelector('.portfolio-item-details').innerHTML;
-  body.querySelectorAll('.notion-link').forEach(a => {
-    const url = NOTION_PAGES[a.dataset.notion];
-    if (url) a.href = url; else a.style.display = 'none';
-  });
-  popup.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closePopup() { popup.classList.remove('open'); document.body.style.overflow = ''; }
-document.querySelector('.portfolio-popup-close').addEventListener('click', closePopup);
-popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closePopup();
-  if (!popup.classList.contains('open')) return;
-  if (e.key === 'ArrowRight') stepPopup(1);
-  if (e.key === 'ArrowLeft') stepPopup(-1);
-});
-function stepPopup(d) {
-  const list = visibleCards(); if (!popupCard || list.length < 2) return;
-  const i = (list.indexOf(popupCard) + d + list.length) % list.length;
-  openPopup(list[i]);
-  document.querySelector('.portfolio-popup-inner').scrollTop = 0;
-  const content = document.querySelector('.portfolio-popup-content');
-  content.classList.remove('swap'); void content.offsetWidth; content.classList.add('swap');
-}
-document.querySelector('.pp-prev').addEventListener('click', () => stepPopup(-1));
-document.querySelector('.pp-next').addEventListener('click', () => stepPopup(1));
+layoutFeat();
 
 // ===== 스크롤 위치에 따라 메뉴 강조 =====
 const sections = document.querySelectorAll('section[id]');
